@@ -2,13 +2,13 @@ class HolaMundo {
 
   String nombre
 
-  String saluda() {
+  def saluda() {
     return "Hola " + this.nombre + " !!!"
   }
 
-  static void main(String[] args) {
-    HolaMundo obj = new HolaMundo()
-    obj.setNombre("Juan - Paso 2")
-    System.out.println(obj.saluda())
+  static def main(args) {
+    def obj = new HolaMundo()
+    obj.setNombre("Juan - Paso 3")
+    println(obj.saluda())
   }
 }
