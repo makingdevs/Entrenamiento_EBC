@@ -3,12 +3,12 @@ class HolaMundo {
   String nombre
 
   def saluda() {
-    return "Hola " + this.nombre + " !!!"
+    "Hola " + this.nombre + " !!!"
   }
 
-  static def main(args) {
+  static main(args) {
     def obj = new HolaMundo()
-    obj.setNombre("Juan - Paso 3")
+    obj.setNombre("Juan - Paso 4")
     println(obj.saluda())
   }
 }
