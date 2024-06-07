@@ -40,3 +40,7 @@ lineas.drop(1).each { linea ->
 }
 
 println people.findAll { p -> p.genre != "Male" && p.genre != "Female" }
+
+println people.size()
+
+println people.findAll { p -> p.email.endsWith(".com") }*.email
