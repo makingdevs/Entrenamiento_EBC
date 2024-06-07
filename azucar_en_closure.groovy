@@ -3,6 +3,4 @@ def block(n, c){
     c(i)
 }
 
-closure = { println it%2 == 0 ? "${it} PAR" :"${it} IMPAR" }
-
-block(10, closure)
+block(10, { println it%2 == 0 ? "${it} PAR" :"${it} IMPAR" })
