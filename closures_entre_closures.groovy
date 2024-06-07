@@ -1,4 +1,5 @@
-// area = {base, altura -> base * altura / 2}
+// area_triangulo = {base, altura -> area_rectangulo(base, altura) / 2}
+// area_rectangulo = {base, altura -> base * altura / 2}
 
 def area_triangulo(base, altura) {
     area_rectangulo(base, altura) / 2
