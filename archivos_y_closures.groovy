@@ -14,10 +14,10 @@ class Person {
 }
 
 people = []
-
-lineas.each { linea ->
+// Quito el encabezado
+lineas.drop(1).each { linea ->
   attrs = linea.split(",")
-  person = new Person(id: attrs[0], name: attrs[1], lastName: attrs[2], email:attrs[3], genre: attrs[4], ipAddress: attrs[5])
+  person = new Person(id: attrs[0].toInteger(), name: attrs[1], lastName: attrs[2], email:attrs[3], genre: attrs[4], ipAddress: attrs[5])
   people << person
 }
 
