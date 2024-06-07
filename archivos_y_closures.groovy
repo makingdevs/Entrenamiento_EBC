@@ -4,6 +4,7 @@ lineas = texto.split("\n")
 
 println lineas.size()
 
+@groovy.transform.ToString
 class Person {
   Integer id
   String name
