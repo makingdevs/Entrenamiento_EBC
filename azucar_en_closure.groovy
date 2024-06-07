@@ -3,4 +3,6 @@ def block(n, c){
     c(i)
 }
 
-block(10) { println it%2 == 0 ? "${it} PAR" :"${it} IMPAR" }
+block(10) { n ->
+  println n%2 == 0 ? "${n} PAR" :"${n} IMPAR"
+}
