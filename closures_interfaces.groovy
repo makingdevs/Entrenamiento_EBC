@@ -9,10 +9,8 @@ frame.getContentPane().add(button)
 
 
 
-button.addActionListener(new ActionListener() {
-    void actionPerformed(ActionEvent event){
-      println "Presionaste el botón de nuevo"
-    }
-  })
+button.addActionListener({ event ->
+  println "Presionaste el botón de nuevo con Groovy"
+} as ActionListener)
 
 frame.show()
