@@ -3,16 +3,11 @@ area_ancho = { l, w, h -> 2 * w * h}
 area_largo = { l, w, h -> 2 * h * l}
 
 area_lado_pequeño = {l, w, h ->
-  [
-    l*w,
-    l*h,
-    w*h
-  ].min()
+  [ l*w, l*h, w*h ].min()
 }
 
 def papelNecesarioParaLaCaja(caja) {
-  lados = caja.split("x")
-  (alto, largo, ancho) = lados*.toInteger()
+  (alto, largo, ancho) = caja.split("x")*.toInteger()
 
   area_alto(alto, ancho, largo) +
   area_ancho(alto, ancho, largo) +
