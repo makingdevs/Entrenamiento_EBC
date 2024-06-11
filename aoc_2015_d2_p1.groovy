@@ -12,9 +12,7 @@ area_lado_pequeño = {l, w, h ->
 
 def papelNecesarioParaLaCaja(caja) {
   lados = caja.split("x")
-  alto = lados[0].toInteger()
-  ancho = lados[1].toInteger()
-  largo = lados[2].toInteger()
+  (alto, largo, ancho) = lados*.toInteger()
 
   area_alto(alto, ancho, largo) +
   area_ancho(alto, ancho, largo) +
