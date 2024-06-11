@@ -10,11 +10,10 @@ frame.getContentPane().add(button)
 
 class MyActionListener implements ActionListener {
   void actionPerformed(ActionEvent event){
-    println "Presionaste el botón"
+    println "Presionaste el botón de nuevo"
   }
 }
-l = new MyActionListener()
 
-button.addActionListener(l)
+button.addActionListener(new MyActionListener())
 
 frame.show()
