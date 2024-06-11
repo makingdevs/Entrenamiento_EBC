@@ -6,7 +6,8 @@ camino = indicaciones.split("")
 println camino
 
 camino.each { i ->
-  (x,y) = posiciones[-1]
+  (x,y) = posiciones.last()
+  // (x,y) = posiciones[-1]
   switch(i) {
     case ">":
       posiciones << [x+1, y]
