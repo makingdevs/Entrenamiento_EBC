@@ -1,22 +1,25 @@
-// def saluda(s) {
-//   println s.toUpperCase()
-// }
-//
-// saluda("hola")
-// saluda('c')
+@groovy.transform.TypeChecked
+def saluda(String s) {
+  println s.toUpperCase()
+}
+
+saluda("hola")
+saluda('c')
 // saluda(3828)
 
-//class P {
-//  String nombre
-//  String apellido
-//  String getFullName() { "$nambre $apellido" }
-//}
-//
-//def p = new P(nombre: "Juan", apellido: "Reyes")
+@groovy.transform.TypeChecked
+class P {
+  String nombre
+  String apellido
+  String getFullName() { "$nombre $apellido" }
+}
 
-//int metodo() {
-//  if(false) { 'String' }
-//  else { 42 }
-//}
-//
-//println metodo()
+def p = new P(nombre: "Juan", apellido: "Reyes")
+
+@groovy.transform.TypeChecked
+int metodo() {
+  if(false) { 'String'.size() }
+  else { 42 }
+}
+
+println metodo()
