@@ -28,3 +28,8 @@ papel_necesario_2 = papelNecesarioParaLaCaja(regalo2)
 
 println papel_necesario_1
 println papel_necesario_2
+
+regalos = new File("regalos.txt").text
+cajas = regalos.split("\n").collect { caja -> papelNecesarioParaLaCaja(caja) }
+println cajas
+println cajas.sum()
