@@ -60,3 +60,10 @@ println sql.updateCount
 sql.eachRow("select * from EMPLEADOSPRUEBA"){ empleado ->
   println empleado
 }
+
+println "-"*50
+dataset = sql.dataSet("EMPLEADOSPRUEBA")
+dataset.add([paterno: "Pineda", materno: "EBC", nombre: "Reyna", trab_id: new Date().time])
+
+busqueda = dataset.findAll { p -> p.paterno == 'Pineda' }
+busqueda.each { println it }
