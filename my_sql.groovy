@@ -52,6 +52,11 @@ insert_query = """
 """
 sql.execute insert_query, [paterno: "Barbachano", materno: "EBC", nombre: "Gerardo", id: new Date().time]
 
+results = sql.execute "update EMPLEADOSPRUEBA set PATERNO=? where PATERNO = ?", ["NUEVO", "Barbachano"]
+
+println results
+println sql.updateCount
+
 sql.eachRow("select * from EMPLEADOSPRUEBA"){ empleado ->
   println empleado
 }
