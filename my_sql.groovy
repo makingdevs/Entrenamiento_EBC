@@ -34,3 +34,24 @@ sql.callWithAllRows(sp, [P_CODE, CURSOR_PARAMETER]) { cursor ->
     println "Columna 1: $columna1, Columna 2: $columna2"
   }
 }
+
+id = new Date().time.toString()
+nombre = "Juan"
+paterno = "Reyes"
+materno = "Zuñiga"
+
+insert_query = """
+  insert into EMPLEADOSPRUEBA(TRAB_ID, NOMBRE, PATERNO, MATERNO)
+  values(?, ?, ?, ?)
+"""
+sql.execute insert_query, [id, nombre, paterno, materno]
+
+insert_query = """
+  insert into EMPLEADOSPRUEBA(TRAB_ID, NOMBRE, PATERNO, MATERNO)
+  values(:id, :nombre, :paterno, :materno)
+"""
+sql.execute insert_query, [paterno: "Barbachano", materno: "EBC", nombre: "Gerardo", id: new Date().time]
+
+sql.eachRow("select * from EMPLEADOSPRUEBA"){ empleado ->
+  println empleado
+}
