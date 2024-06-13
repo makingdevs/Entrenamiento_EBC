@@ -23,11 +23,7 @@ println lista.size()
 println lista*.NIDFALTAS
 
 
-CURSOR_PARAMETER = new OutParameter() {
-  public int getType() {
-    return OracleTypes.CURSOR;
-  }
-};
+CURSOR_PARAMETER = { OracleTypes.CURSOR } as OutParameter
 
 P_CODE = '202420'
 sp = "{call GENPUB.PC_APIBANNER_ALL_TERMS.PR_ALL_TERMS(?, ?)}"
