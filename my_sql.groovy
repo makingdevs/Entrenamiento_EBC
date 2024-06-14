@@ -6,6 +6,15 @@
 import groovy.sql.Sql
 import oracle.jdbc.OracleTypes
 import groovy.sql.OutParameter;
+import java.util.logging.*
+
+// Configura el logger para groovy.sql.Sql
+Logger sqlLogger = Logger.getLogger('groovy.sql.Sql')
+sqlLogger.setLevel(Level.FINE)
+ConsoleHandler handler = new ConsoleHandler()
+handler.setLevel(Level.FINE)
+sqlLogger.addHandler(handler)
+
 
 def db = [
   url:'jdbc:oracle:thin:@172.16.60.17:3521:EBCDEVL',
