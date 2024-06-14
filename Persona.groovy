@@ -1,5 +1,7 @@
-@groovy.transform.ToString
-class Persona implements Comparable {
+@groovy.transform.TupleConstructor
+@groovy.transform.EqualsAndHashCode
+@groovy.transform.ToString(includeNames=true)
+class Persona {
   String nombre
   String apellidoPaterno
   String apellidoMaterno
@@ -12,10 +14,4 @@ class Persona implements Comparable {
   Direccion direccion
   List<Telefono> telefonos
 
-  int compareTo(Object object) {
-    // -x this es menor
-    // 0 this es igual
-    // +x this es mayor
-    this.estatura - object.estatura
-  }
 }
