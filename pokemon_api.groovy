@@ -11,6 +11,11 @@ json.sprites.findAll{ k, v -> v.class == String }.each { k, v ->
 
   cmd = "curl ${v} -o ${k}.png"
   println cmd
-  println cmd.execute()
+  //println cmd.execute()
 
 }
+
+println "*"
+println json.sprites
+println "*"
+println json.stats
