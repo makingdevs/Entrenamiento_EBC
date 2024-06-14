@@ -1,11 +1,7 @@
 import groovy.json.JsonSlurper
 
-url = "https://pokeapi.co/api/v2/pokemon/pikachu"
-
-httpConnection = new URL(url)
-
 jsonSlurper = new JsonSlurper()
-json = jsonSlurper.parseText(httpConnection.text)
+json = jsonSlurper.parse(new URL("https://pokeapi.co/api/v2/pokemon/pikachu"))
 
 json.sprites.findAll{ k, v -> v.class == String }.each { k, v ->
 
