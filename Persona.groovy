@@ -1,6 +1,4 @@
-@groovy.transform.TupleConstructor
-@groovy.transform.EqualsAndHashCode
-@groovy.transform.ToString(includeNames=true)
+@groovy.transform.Canonical
 class Persona {
   String nombre
   String apellidoPaterno
