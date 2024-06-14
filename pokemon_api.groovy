@@ -9,6 +9,8 @@ json = jsonSlurper.parseText(httpConnection.text)
 
 json.sprites.findAll{ k, v -> v.class == String }.each { k, v ->
 
-  println v
+  cmd = "curl ${v} -o ${k}.png"
+  println cmd
+  println cmd.execute()
 
 }
