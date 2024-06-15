@@ -22,6 +22,22 @@ class EBCPerson {
   String idEnrollment
 }
 
+@Canonical
+class Program {
+  String code
+  String description
+  Integer totalCourses = 0
+  String courses
+}
+
+@Canonical
+class Equivalence {
+  Integer id
+  String code
+  String description
+  List<Program> programs = []
+}
+
 @Singleton
 @Log4j
 class APITramites {
@@ -43,6 +59,27 @@ class APITramites {
       log.error("Usuario no encontrado!!!")
     new EBCPerson(response.json)
   }
+
+  Equivalence findEquivalenceBy(Integer divisionId) {
+    def response = client.get(
+      path:'/v1/api/equivalence/programs',
+      query:[divisionId: divisionId])
+
+    Equivalence equivalence = new Equivalence(
+      id: response.json.id,
+      code: response.json.code,
+      description: response.json.description)
+    List<Program> programs = response.json.programs.collect { p ->
+      new Program(
+        code: p.code,
+        description: p.description,
+        totalCourses: p.totalCourses,
+        courses: p.courses
+      )
+    }
+    equivalence.programs = programs
+    equivalence
+  }
 }
 
 println APITramites.instance.allAcademicLevels(true)
@@ -50,3 +87,5 @@ println APITramites.instance.allAcademicLevels(false)
 
 println APITramites.instance.findPersonBy(0, "a.rescalvo")
 println APITramites.instance.findPersonBy()
+
+println APITramites.instance.findEquivalenceBy(1)
