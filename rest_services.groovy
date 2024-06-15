@@ -28,6 +28,15 @@ class Program {
   String description
   Integer totalCourses = 0
   String courses
+
+  Program fromJsonParseInMap(Map map){
+    new Program(
+      code: map.code,
+      description: map.description,
+      totalCourses: map?.totalCourses ?: 0,
+      courses: map.courses
+    )
+  }
 }
 
 @Canonical
@@ -70,12 +79,7 @@ class APITramites {
       code: response.json.code,
       description: response.json.description)
     List<Program> programs = response.json.programs.collect { p ->
-      new Program(
-        code: p.code,
-        description: p.description,
-        totalCourses: p?.totalCourses ?: 0,
-        courses: p.courses
-      )
+      new Program().fromJsonParseInMap(p)
     }
     equivalence.programs = programs
     equivalence
