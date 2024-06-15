@@ -73,7 +73,7 @@ class APITramites {
       new Program(
         code: p.code,
         description: p.description,
-        totalCourses: p.totalCourses,
+        totalCourses: p?.totalCourses ?: 0,
         courses: p.courses
       )
     }
