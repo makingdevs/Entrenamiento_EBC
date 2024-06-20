@@ -1,4 +1,4 @@
-package mx.ebc
+package mx.ebc.fizzbuzz
 
 class FizzBuzzJJ {
 
