@@ -4,7 +4,7 @@ import spock.lang.Specification
 
 class FizzBuzzCCSpec extends Specification {
 
-    def "Prueba de FizzBuzz para n numeros"() {
+    def "Prueba de FizzBuzz para tantos numeros, donde el FizzBuzz de #_input es #_output"() {
         given:
         FizzBuzzCC fizzbuzz = new FizzBuzzCC()
 

@@ -4,7 +4,7 @@ import spock.lang.Specification
 
 class FizzBuzzARpSpec extends Specification {
 
-    def "prueba fizzbuzz de n números" (){
+    def "FizzBuzz de #_input es #_output" (){
         given:
         FizzBuzzARp bizzbuzz= new FizzBuzzARp()
         when:

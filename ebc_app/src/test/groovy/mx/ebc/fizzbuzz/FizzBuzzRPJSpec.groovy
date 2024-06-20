@@ -4,7 +4,7 @@ import spock.lang.Specification
 
 class FizzBuzzRPJSpec extends Specification {
 
-  def "Prueba fizzbuzz para n numéros"() {
+  def "FizzBuzz de #_input es #_output"() {
     given:
     FizzBuzzRPJ fizzbuzz = new FizzBuzzRPJ()
 
