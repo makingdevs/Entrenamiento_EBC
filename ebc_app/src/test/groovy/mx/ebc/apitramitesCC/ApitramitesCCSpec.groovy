@@ -15,5 +15,6 @@ class ApitramitesCCSpec extends Specification {
         levels.size() > 0
         levels.size()
         levels
+        levels*.id
     }
 }
