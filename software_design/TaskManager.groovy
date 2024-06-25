@@ -6,30 +6,37 @@ import java.util.Vector;
 
 public class TaskManager {
 
+  private TaskStore taskStore = new TaskStore();
+
   public int howManyTasks() {
-    return 0;
+    return taskStore.count();
   }
 
   public void addTask(Task task) {
+    taskStore.createTask(task);
   }
 
-  public void addTask(String s) {
+  public void addTask(String description) {
+    Task task = new Task();
+    // Nothing with description
+    taskStore.createTask(task);
   }
 
   public void addTask(List<Task> tasksToAdd) {
-
+    for(Task task:tasksToAdd){
+      taskStore.createTask(task);
+    }
   }
 
   public Task getTaskAt(int i) {
-    return null;
+    return taskStore.readTask(new Integer(i).longValue());
   }
 
-  public Task findTask(String s) {
-    return null;
+  public Task findTask(String description) {
+    return taskStore.findTask(description);
   }
 
-  public List<Task> findTasks(String s) {
-    return null;
+  public List<Task> findTasks(String description) {
+    return taskStore.findAllTasks(description);
   }
-
 }
