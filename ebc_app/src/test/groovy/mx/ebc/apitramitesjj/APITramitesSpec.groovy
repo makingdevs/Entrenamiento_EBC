@@ -13,6 +13,15 @@ class APITramitesSpec extends Specification {
       levels.size() > 0
       levels.size()
       levels
-      levels*.id 
+      levels*.id
+  }
+
+  def "Busca personas en el API"(){
+    given:
+      APITramitesJJ instance = APITramitesJJ.instance
+    when:
+      EBCPerson person = instance.findPersonBy(0, "a.rescalvo")
+    then:
+      person.nombre == "Arturo"
   }
 }
