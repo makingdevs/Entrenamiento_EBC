@@ -1,6 +1,8 @@
 plugins {
   id 'groovy'
   id 'application'
+  id 'war'
+  id("org.gretty") version "4.1.4"
 }
 
 repositories {
