@@ -6,21 +6,30 @@ import java.util.Vector;
 
 public class TaskManager {
 
-  public static void main(String[] args) throws IOException {
-    Vector<String> tasks = new Vector<String>();
-    System.out.println("Write a tasks list, ends with an empty task.");
-    String task = "";
-    do{
-      BufferedReader in=new BufferedReader(new InputStreamReader(System.in));
-      System.out.print("To Do: ");
-      task = in.readLine();
-      if(!task.equals(""))
-        tasks.add(task);
-    }while(!task.equals(""));
-    System.out.println("You have " + tasks.size() + " tasks");
-    System.out.println("Those are here: ");
-    for(String t:tasks){
-      System.out.println("* " + t);
-    }
+  public int howManyTasks() {
+    return 0;
   }
+
+  public void addTask(Task task) {
+  }
+
+  public void addTask(String s) {
+  }
+
+  public void addTask(List<Task> tasksToAdd) {
+
+  }
+
+  public Task getTaskAt(int i) {
+    return null;
+  }
+
+  public Task findTask(String s) {
+    return null;
+  }
+
+  public List<Task> findTasks(String s) {
+    return null;
+  }
+
 }
