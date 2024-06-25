@@ -13,6 +13,6 @@ class APITramitesSpec extends Specification {
       levels.size() > 0
       levels.size()
       levels
-
+      levels*.id
   }
 }
