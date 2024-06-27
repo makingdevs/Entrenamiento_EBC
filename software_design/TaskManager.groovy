@@ -6,7 +6,7 @@ import java.util.Vector;
 
 public class TaskManager {
 
-  private TaskStore taskStore = new TaskStore();
+  private TaskStore taskStore;
 
   public int howManyTasks() {
     return taskStore.count();
