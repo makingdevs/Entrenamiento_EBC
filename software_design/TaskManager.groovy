@@ -8,6 +8,14 @@ public class TaskManager {
 
   private TaskStore taskStore;
 
+	public setTaskStore(TaskStore taskStore){
+		this.taskStore = taskStore;
+	}
+
+	public getTaskStore(){
+		return this.taskStore;
+	}
+
   public int howManyTasks() {
     return taskStore.count();
   }
