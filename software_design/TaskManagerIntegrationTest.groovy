@@ -13,8 +13,9 @@ public class TaskManagerIntegrationTests {
   @Before
   public void setup(){
 		TaskStore taskStore = new TaskStoreSimpleImpl();
+		TaskStore taskStore2 = new TaskStoreVectorImpl();
     taskManager = new TaskManager();
-		taskManager.setTaskStore(taskStore);
+		taskManager.setTaskStore(taskStore2);
   }
 
   @Test
