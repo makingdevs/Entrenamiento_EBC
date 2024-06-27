@@ -1,79 +1,75 @@
-import static org.junit.Assert.*;
-import org.junit.Test;
-import org.junit.Ignore;
-import org.junit.Before;
+import static org.junit.Assert.*
+import org.junit.Test
+import org.junit.Ignore
+import org.junit.Before
 
-import java.util.ArrayList;
-import java.util.List;
+class TaskManagerIntegrationTests {
 
-public class TaskManagerIntegrationTests {
-
-  private TaskManager taskManager;
+  TaskManager taskManager
 
   @Before
-  public void setup(){
-		TaskStore taskStore = new TaskStoreSimpleImpl();
-		TaskStore taskStore2 = new TaskStoreVectorImpl();
-    taskManager = new TaskManager();
-		taskManager.setTaskStore(taskStore2);
+  void setup(){
+		TaskStore taskStore = new TaskStoreSimpleImpl()
+		TaskStore taskStore2 = new TaskStoreVectorImpl()
+    taskManager = new TaskManager(taskStore: taskStore2)
   }
 
   @Test
 	@Ignore
-  public void aTaskManagerWithZeroTasks(){
-    assertNotNull(taskManager);
-    assertTrue(taskManager.howManyTasks() == 0);
+  void aTaskManagerWithZeroTasks(){
+    assertNotNull(taskManager)
+    assertTrue(taskManager.howManyTasks() == 0)
   }
 
   @Test
-  public void aTaskManagerWithOneTasks(){
-    assertNotNull(taskManager);
-    taskManager.addTask(new Task());
-    assertTrue(taskManager.howManyTasks() >= 1);
+  void aTaskManagerWithOneTasks(){
+    assertNotNull(taskManager)
+    taskManager.addTask(new Task())
+    assertTrue(taskManager.howManyTasks() >= 1)
   }
 
   @Test
-  public void addATaskFromAString(){
-    assertNotNull(taskManager);
-    taskManager.addTask("new task");
-    assertTrue(taskManager.howManyTasks() >= 1);
+  void addATaskFromAString(){
+    assertNotNull(taskManager)
+    taskManager.addTask("new task")
+    assertTrue(taskManager.howManyTasks() >= 1)
   }
 
   @Test
-  public void addATasksFromAList(){
-    assertNotNull(taskManager);
-    List<Task> tasksToAdd = new ArrayList<Task>();
-    tasksToAdd.add(new Task(1, "new task"));
-    tasksToAdd.add(new Task(2, "new task"));
-    taskManager.addTask(tasksToAdd);
-    assertTrue(taskManager.howManyTasks() >= 2);
+  void addATasksFromAList(){
+    assertNotNull(taskManager)
+    List<Task> tasksToAdd = new ArrayList<Task>()
+    tasksToAdd.add(new Task(1, "new task"))
+    tasksToAdd.add(new Task(2, "new task"))
+    taskManager.addTask(tasksToAdd)
+    assertTrue(taskManager.howManyTasks() >= 2)
   }
 
   @Test
-  public void addATasksFromAFile(){
+  void addATasksFromAFile(){
     // TODO: Implements the feature
-    assertTrue(true);
+    assertTrue(true)
   }
 
   @Test
-  public void getATaskByIndex(){
-    addATaskFromAString();
-    Task task = taskManager.getTaskAt(1);
-    assertNotNull(task);
+  void getATaskByIndex(){
+    addATaskFromAString()
+    Task task = taskManager.getTaskAt(1)
+    assertNotNull(task)
   }
 
   @Test
-  public void findTaskByDescription(){
-    addATaskFromAString();
-    Task task = taskManager.findTask("new task");
-    assertNotNull(task);
+  void findTaskByDescription(){
+    addATaskFromAString()
+    Task task = taskManager.findTask("new task")
+    assertNotNull(task)
   }
 
   @Test
-  public void findAllTasksByDescription(){
-    addATasksFromAList();
-    List<Task> tasksFound = taskManager.findTasks("new task");
-    assertTrue(tasksFound.size() == 2);
+  void findAllTasksByDescription(){
+    addATasksFromAList()
+    List<Task> tasksFound = taskManager.findTasks("new task")
+    assertTrue(tasksFound.size() == 2)
   }
 
 }

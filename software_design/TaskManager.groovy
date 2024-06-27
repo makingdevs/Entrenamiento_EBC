@@ -1,49 +1,41 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.List;
-import java.util.Vector;
+import java.io.BufferedReader
+import java.io.IOException
+import java.io.InputStreamReader
+import java.util.List
+import java.util.Vector
 
-public class TaskManager {
+class TaskManager {
 
-  private TaskStore taskStore;
+  TaskStore taskStore
 
-	public setTaskStore(TaskStore taskStore){
-		this.taskStore = taskStore;
-	}
-
-	public getTaskStore(){
-		return this.taskStore;
-	}
-
-  public int howManyTasks() {
-    return taskStore.count();
+  int howManyTasks() {
+    taskStore.count()
   }
 
-  public void addTask(Task task) {
-    taskStore.createTask(task);
+  void addTask(Task task) {
+    taskStore.createTask(task)
   }
 
-  public void addTask(String description) {
-    Task task = new Task(description: description);
-    taskStore.createTask(task);
+  void addTask(String description) {
+    Task task = new Task(description: description)
+    taskStore.createTask(task)
   }
 
-  public void addTask(List<Task> tasksToAdd) {
+  void addTask(List<Task> tasksToAdd) {
     for(Task task:tasksToAdd){
-      taskStore.createTask(task);
+      taskStore.createTask(task)
     }
   }
 
-  public Task getTaskAt(int i) {
-    return taskStore.readTask(new Integer(i).longValue());
+  Task getTaskAt(int i) {
+    taskStore.readTask(new Integer(i).longValue())
   }
 
-  public Task findTask(String description) {
-    return taskStore.findTask(description);
+  Task findTask(String description) {
+    taskStore.findTask(description)
   }
 
-  public List<Task> findTasks(String description) {
-    return taskStore.findAllTasks(description);
+  List<Task> findTasks(String description) {
+    taskStore.findAllTasks(description)
   }
 }
