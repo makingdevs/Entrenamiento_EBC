@@ -25,8 +25,7 @@ public class TaskManager {
   }
 
   public void addTask(String description) {
-    Task task = new Task();
-    // Nothing with description
+    Task task = new Task(description: description);
     taskStore.createTask(task);
   }
 
