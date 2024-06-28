@@ -1,4 +1,4 @@
-package mx.ebc.data
+package mx.ebc.config
 
 import org.springframework.context.annotation.*
 
