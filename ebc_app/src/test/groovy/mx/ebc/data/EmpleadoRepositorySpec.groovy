@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.*
 import mx.ebc.config.DataConfig
 import javax.sql.DataSource
 import org.springframework.jdbc.core.JdbcTemplate
+import mx.ebc.model.Empleado
 
 @ContextConfiguration(classes = [DataConfig])
 class EmpleadoRepositorySpec extends Specification {
@@ -37,6 +38,20 @@ class EmpleadoRepositorySpec extends Specification {
   void "should exist the bean 'JdbcTemplate' in spring"() {
     expect:
       jdbcTemplate
+  }
+
+  void "should create a new Employee"() {
+    given:
+      Empleado e = new Empleado(
+        nombre: "Juan",
+        materno: "Zuniga",
+        paterno: "Reyes")
+
+    when:
+      int result = empleadoRepository.createEmpleado(e)
+
+    then:
+      result
   }
 
   void "should retrieve de number of employees"() {
