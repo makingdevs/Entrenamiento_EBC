@@ -15,8 +15,7 @@ class CampusRepositorySpec extends Specification {
   @Autowired
   ApplicationContext applicationContext
 
-
-  void "should exist the bean in spring"() {
+  void "should exist the bean 'CampusRepository' in spring"() {
     expect:
       applicationContext
       campusRepository
