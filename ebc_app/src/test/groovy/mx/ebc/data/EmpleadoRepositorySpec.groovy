@@ -74,11 +74,9 @@ class EmpleadoRepositorySpec extends Specification {
   void "should retrieve a term codes"() {
     when:
       List termCode = allTermsSP.execute("202420")
-      println "*"*50
-      println termCode
-      println "*"*50
 
     then:
-      termCode
+      termCode[0].term_code == "202420"
+      termCode[0].term_desc == "202420 Lic Feb-Jun 24"
   }
 }
