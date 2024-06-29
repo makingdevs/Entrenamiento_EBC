@@ -3,7 +3,7 @@ package mx.ebc.web
 import javax.servlet.annotation.WebServlet
 import javax.servlet.http.*
 
-@WebServlet("/")
+// @WebServlet("/")
 class HomeServlet extends HttpServlet {
 
   void doGet(HttpServletRequest request, HttpServletResponse response){
