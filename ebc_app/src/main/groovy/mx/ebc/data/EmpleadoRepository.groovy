@@ -36,4 +36,6 @@ class EmpleadoRepository {
     jdbcTemplate.query(query, empleadoMapper)
   }
 
+  // Crea un método que obtenga usuario por su id
+
 }

@@ -24,6 +24,9 @@ class EmpleadoRepositorySpec extends Specification {
   @Autowired
   JdbcTemplate jdbcTemplate
 
+  @Autowired
+  AllTermsSP allTermsSP
+
   void "should exist the bean 'EmpleadoRepository' in spring"() {
     expect:
       applicationContext
@@ -62,10 +65,20 @@ class EmpleadoRepositorySpec extends Specification {
   void "should retrieve a List of Employees"() {
     when:
       List<Empleado> empleados = empleadoRepository.listEmpleados()
-      println empleados
 
     then:
       empleados
       empleados*.trab_id
+  }
+
+  void "should retrieve a term codes"() {
+    when:
+      List termCode = allTermsSP.execute("202420")
+      println "*"*50
+      println termCode
+      println "*"*50
+
+    then:
+      termCode
   }
 }
