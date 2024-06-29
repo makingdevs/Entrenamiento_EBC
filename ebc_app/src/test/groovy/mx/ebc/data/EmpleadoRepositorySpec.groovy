@@ -59,4 +59,13 @@ class EmpleadoRepositorySpec extends Specification {
       empleadoRepository.countEmpleados()
   }
 
+  void "should retrieve a List of Employees"() {
+    when:
+      List<Empleado> empleados = empleadoRepository.listEmpleados()
+      println empleados
+
+    then:
+      empleados
+      empleados*.trab_id
+  }
 }

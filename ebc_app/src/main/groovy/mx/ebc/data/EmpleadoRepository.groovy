@@ -20,4 +20,9 @@ class EmpleadoRepository {
     jdbcTemplate.update(insertQuery, empleado.nombre, empleado.paterno, empleado.materno, empleado.trab_id)
   }
 
+  List<Empleado> listEmpleados() {
+    String query = "SELECT TRAB_ID, PATERNO, MATERNO, NOMBRE FROM EMPLEADOSPRUEBA"
+    jdbcTemplate.query(query, new EmpleadoRowMapper())
+  }
+
 }
