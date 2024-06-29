@@ -39,4 +39,9 @@ class EmpleadoRepositorySpec extends Specification {
       jdbcTemplate
   }
 
+  void "should retrieve de number of employees"() {
+    expect:
+      empleadoRepository.countEmpleados()
+  }
+
 }
