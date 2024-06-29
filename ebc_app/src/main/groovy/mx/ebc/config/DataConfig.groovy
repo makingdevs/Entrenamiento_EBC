@@ -2,6 +2,7 @@ package mx.ebc.config
 
 import org.springframework.context.annotation.*
 import org.springframework.jdbc.datasource.DriverManagerDataSource
+import org.springframework.jdbc.core.JdbcTemplate
 
 @Configuration
 @ComponentScan(basePackages = ["mx.ebc.data"])
@@ -15,6 +16,11 @@ class DataConfig {
       password:'u_pick_it'
     ]
     new DriverManagerDataSource(db)
+  }
+
+  @Bean
+  JdbcTemplate jdbcTemplate(){
+    new JdbcTemplate(dataSource())
   }
 
 }

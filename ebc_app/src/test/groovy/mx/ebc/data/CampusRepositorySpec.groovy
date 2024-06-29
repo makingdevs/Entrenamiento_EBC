@@ -6,6 +6,7 @@ import org.springframework.test.context.ContextConfiguration
 import org.springframework.beans.factory.annotation.*
 import mx.ebc.config.DataConfig
 import javax.sql.DataSource
+import org.springframework.jdbc.core.JdbcTemplate
 
 @ContextConfiguration(classes = [DataConfig])
 class CampusRepositorySpec extends Specification {
@@ -19,6 +20,9 @@ class CampusRepositorySpec extends Specification {
   @Autowired
   DataSource dataSource
 
+  @Autowired
+  JdbcTemplate jdbcTemplate
+
   void "should exist the bean 'CampusRepository' in spring"() {
     expect:
       applicationContext
@@ -28,6 +32,11 @@ class CampusRepositorySpec extends Specification {
   void "should exist the bean 'DataSource' in spring"() {
     expect:
       dataSource
+  }
+
+  void "should exist the bean 'JdbcTemplate' in spring"() {
+    expect:
+      jdbcTemplate
   }
 
 }
