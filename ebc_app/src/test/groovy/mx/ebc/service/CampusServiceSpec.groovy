@@ -1,13 +1,12 @@
 package mx.ebc.service
 
+import mx.ebc.config.DataJpaConfig
 import spock.lang.Specification
-import org.springframework.context.ApplicationContext
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.beans.factory.annotation.*
-import mx.ebc.config.DataConfig
 import mx.ebc.config.ServiceConfig
 
-@ContextConfiguration(classes = [DataConfig, ServiceConfig])
+@ContextConfiguration(classes = [DataJpaConfig, ServiceConfig])
 class CampusServiceSpec extends Specification {
 
   @Autowired
