@@ -1,5 +1,6 @@
 package mx.ebc.web
 
+import mx.ebc.model.StvCamp
 import org.springframework.stereotype.*
 import org.springframework.beans.factory.annotation.*
 import mx.ebc.service.CampusService
@@ -15,9 +16,10 @@ class CampusController {
   CampusService campusService
 
   @RequestMapping(value = "/hello", method = RequestMethod.GET)
-  String home(Model model) {
-    model.addAttribute("mensaje", "Saludo desde el controller")
-    // Hacemos cosas!!!!
+  String home(Map model) {
+    List<StvCamp> campuses = campusService.allCampus()
+    model.mensaje = "Saludo desde el controller"
+    model.campuses = campuses
     "home"
   }
 
