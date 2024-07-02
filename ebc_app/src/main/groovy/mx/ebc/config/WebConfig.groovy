@@ -12,11 +12,16 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver
 @ComponentScan(basePackages = ["mx.ebc.web"])
 class WebConfig implements WebMvcConfigurer {
 
-    @Bean
-    ViewResolver jspViewResolver(){
-        InternalResourceViewResolver resolver = new InternalResourceViewResolver()
-        resolver.prefix = "/WEB-INF/views/"
-        resolver.suffix = ".jsp"
-        resolver
+    @Override
+    void configureViewResolvers(ViewResolverRegistry registry) {
+        registry.jsp("/WEB-INF/views/", ".jsp")
     }
+
+    // @Bean
+    // ViewResolver jspViewResolver(){
+    //     InternalResourceViewResolver resolver = new InternalResourceViewResolver()
+    //     resolver.prefix = "/WEB-INF/views/"
+    //     resolver.suffix = ".jsp"
+    //     resolver
+    // }
 }
