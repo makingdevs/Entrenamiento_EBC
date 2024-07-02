@@ -9,10 +9,7 @@ import javax.persistence.Id
 class Empleado {
   @Id
   String trab_id = new Date().time.toString()
-  @Column
   String paterno
-  @Column
   String materno
-  @Column
   String nombre
 }
