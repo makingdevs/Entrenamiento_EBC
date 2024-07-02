@@ -60,4 +60,31 @@ class EmpleadoJpaRepositorySpec extends Specification {
     optionalEmpleado.get().nombre == "Reyna"
   }
 
+  void "should retrieve one Employee by 'Nombre'"() {
+    given:
+    String nombre = "Reyna"
+
+    when:
+    Optional<Empleado> optionalEmpleado = empleadoJPARepository.findByNombre(nombre)
+
+    then:
+    optionalEmpleado.get()
+    optionalEmpleado.get().trab_id == "1"
+    optionalEmpleado.get().paterno == "PINEDA"
+  }
+
+  void "should retrieve one Employee by 'Nombre' and 'Paterno'"() {
+    given:
+    String nombre = "Reyna"
+    String paterno = "PINEDA"
+
+    when:
+    Optional<Empleado> optionalEmpleado = empleadoJPARepository.findByNombreAndPaterno(nombre, paterno)
+
+    then:
+    optionalEmpleado.get()
+    optionalEmpleado.get().trab_id == "1"
+    optionalEmpleado.get().materno == "JUAREZ"
+  }
+
 }
