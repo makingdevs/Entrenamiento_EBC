@@ -65,10 +65,24 @@ class EmpleadoRepositorySpec extends Specification {
   void "should retrieve a List of Employees"() {
     when:
       List<Empleado> empleados = empleadoRepository.listEmpleados()
+      println empleados
 
     then:
       empleados
       empleados*.trab_id
+  }
+
+  void "should retrieve one Employee"() {
+    given:
+    String trabId = "1"
+
+    when:
+    Empleado empleado = empleadoRepository.findEmpleadoById(trabId)
+
+    then:
+    empleado
+    empleado.trab_id == "1"
+    empleado.nombre == "Reyna"
   }
 
   void "should retrieve a term codes"() {
