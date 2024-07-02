@@ -1,12 +1,14 @@
 package mx.ebc.data
 
-import org.springframework.stereotype.*
-import org.springframework.beans.factory.annotation.*
-import org.springframework.jdbc.core.*
 import mx.ebc.model.Empleado
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.jdbc.core.JdbcTemplate
+import org.springframework.jdbc.core.RowMapper
+import org.springframework.stereotype.Repository
+
 import java.sql.ResultSet
 
-@Repository
+@Repository("empleadoRepository")
 class EmpleadoRepository {
 
   @Autowired
@@ -36,6 +38,9 @@ class EmpleadoRepository {
     jdbcTemplate.query(query, empleadoMapper)
   }
 
-  // Crea un método que obtenga usuario por su id
+  Empleado findEmpleadoById(String trabId){
+    String query = "SELECT TRAB_ID, PATERNO, MATERNO, NOMBRE FROM EMPLEADOSPRUEBA WHERE TRAB_ID = ?"
+    jdbcTemplate.queryForObject(query, empleadoMapper, trabId)
+  }
 
 }
