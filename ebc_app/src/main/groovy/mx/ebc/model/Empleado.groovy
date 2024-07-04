@@ -8,7 +8,7 @@ import javax.persistence.Id
 @Entity(name = "EMPLEADOSPRUEBA")
 class Empleado {
   @Id
-  String trab_id = new Date().time.toString()
+  String trab_id
   String paterno
   String materno
   String nombre

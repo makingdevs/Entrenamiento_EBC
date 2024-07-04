@@ -13,7 +13,12 @@ class EmpleadoServiceImpl implements EmpleadoService {
 
     @Override
     Empleado create(Map params) {
-        empleadoJPARepository.save(new Empleado(params))
+        empleadoJPARepository.save(new Empleado(
+                trab_id: new Date().time.toString(),
+                paterno: params.paterno,
+                materno: params.materno,
+                nombre: params.nombre
+        ))
     }
 
     @Override
