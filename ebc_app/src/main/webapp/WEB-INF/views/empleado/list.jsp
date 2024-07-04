@@ -36,7 +36,7 @@
           <td>${e.paterno}</td>
           <td>${e.materno}</td>
           <td>
-            <a href="${pageContext.request.contextPath}/empleado/update?trab_id=${e.trab_id}">
+            <a href="${pageContext.request.contextPath}/empleado/update?id=${e.trab_id}">
               Editar
             </a>
           </td>

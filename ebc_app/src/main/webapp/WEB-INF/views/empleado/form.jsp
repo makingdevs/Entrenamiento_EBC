@@ -8,6 +8,7 @@
 <body>
     <h1>Nuevo empleado</h1>
     <form:form modelAttribute="empleado" method="post">
+        <form:hidden path="trab_id"/>
         <form:label path="nombre">Nombre</form:label>
         <form:input path="nombre"/> <br><br>
         <form:label path="paterno">Paterno</form:label>

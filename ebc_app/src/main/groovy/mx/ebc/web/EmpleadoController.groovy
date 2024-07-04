@@ -46,7 +46,7 @@ class EmpleadoController {
     }
 
     @GetMapping("/update")
-    String showFormForUpdate(@RequestParam("trab_id") String id, Map model){
+    String showFormForUpdate(@RequestParam("id") String id, Map model){
         Empleado empleado = empleadoService.findEmpleadoById(id)
         model.empleado = empleado
         "empleado/form"
