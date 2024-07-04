@@ -16,5 +16,9 @@
         <form:input path="materno"/> <br><br>
         <input type="submit" value="Guardar"/>
     </form:form>
+    <br> <br> <br>
+    <a href="${pageContext.request.contextPath}/empleado">
+      Regresar a la lista
+    </a>
 </body>
 </html>

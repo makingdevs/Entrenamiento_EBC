@@ -8,6 +8,12 @@
 <body>
     <h1>Lista de Empleados</h1>
 
+    <a href="${pageContext.request.contextPath}/empleado/create">
+        Nuevo Empleado
+    </a>
+    <br>
+    <br>
+
     <table>
       <thead>
         <tr>
