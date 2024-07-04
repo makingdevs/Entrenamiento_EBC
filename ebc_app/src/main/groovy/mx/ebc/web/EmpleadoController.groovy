@@ -26,6 +26,13 @@ class EmpleadoController {
         "empleado/list"
     }
 
+    @GetMapping("/export")
+    String exportEmpleados(Map model) {
+        List<Empleado> empleados = empleadoService.listAll()
+        model.empleados = empleados
+        "empleadoExcelView"
+    }
+
     @GetMapping("/show/{id}")
     String show(@PathVariable("id") String id, Map model){
        Empleado empleado = empleadoService.findEmpleadoById(id)
