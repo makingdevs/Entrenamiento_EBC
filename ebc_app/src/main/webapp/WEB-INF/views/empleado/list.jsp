@@ -11,6 +11,10 @@
     <a href="${pageContext.request.contextPath}/empleado/create">
         Nuevo Empleado
     </a>
+    &nbsp; | &nbsp;
+    <a href="${pageContext.request.contextPath}/empleado/export">
+       Exportar lista de empleados
+    </a>
     <br>
     <br>
 
