@@ -17,5 +17,11 @@
             <li>${c.stvcampCode} - ${c.stvcampDesc}</li>
         </c:forEach>
     </ul>
+
+    <form method="post" >
+    <label>Campo 1:</label>
+    <input type="text" name="campo"/>
+    <button type="submit">Enviar</button>
+    </form>
 </body>
 </html>

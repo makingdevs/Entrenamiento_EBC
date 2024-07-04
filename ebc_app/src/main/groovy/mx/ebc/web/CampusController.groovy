@@ -7,6 +7,7 @@ import mx.ebc.service.CampusService
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
+import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.ResponseBody
 
 @Controller
@@ -20,6 +21,12 @@ class CampusController {
     List<StvCamp> campuses = campusService.allCampus()
     model.mensaje = "Saludo desde el controller"
     model.campuses = campuses
+    "home"
+  }
+
+  @RequestMapping(value = "/hello", method = RequestMethod.POST)
+  String form(@RequestParam("campo") String campo1) {
+    println campo1
     "home"
   }
 
