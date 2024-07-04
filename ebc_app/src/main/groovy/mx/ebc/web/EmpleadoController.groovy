@@ -41,7 +41,7 @@ class EmpleadoController {
 
     @PostMapping("/create")
     String submitForm(@ModelAttribute Empleado empleado){
-        println empleado.properties
-        "empleado/form"
+        Empleado saveEmpleado = empleadoService.create(empleado.properties)
+        "redirect:/empleado"
     }
 }
