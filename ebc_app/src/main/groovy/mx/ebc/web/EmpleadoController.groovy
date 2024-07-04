@@ -44,4 +44,17 @@ class EmpleadoController {
         Empleado saveEmpleado = empleadoService.create(empleado.properties)
         "redirect:/empleado"
     }
+
+    @GetMapping("/update")
+    String showFormForUpdate(@RequestParam("trab_id") String id, Map model){
+        Empleado empleado = empleadoService.findEmpleadoById(id)
+        model.empleado = empleado
+        "empleado/form"
+    }
+
+    @PostMapping("/update")
+    String submitFormUpdate(@ModelAttribute Empleado empleado){
+        Empleado saveEmpleado = empleadoService.update(empleado)
+        "redirect:/empleado"
+    }
 }
