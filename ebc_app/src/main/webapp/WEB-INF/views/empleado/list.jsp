@@ -7,6 +7,7 @@
 </head>
 <body>
     <h1>Lista de Empleados</h1>
+
     <table>
       <thead>
         <tr>
@@ -19,7 +20,11 @@
       <tbody>
         <c:forEach var="e" items="${empleados}">
         <tr>
-          <td>${e.trab_id}</td>
+          <td>
+            <a href="${pageContext.request.contextPath}/empleado/show/${e.trab_id}">
+              ${e.trab_id}
+            </a>
+          </td>
           <td>${e.nombre}</td>
           <td>${e.paterno}</td>
           <td>${e.materno}</td>
