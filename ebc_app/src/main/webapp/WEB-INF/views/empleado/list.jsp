@@ -21,6 +21,7 @@
           <th>Nombre</th>
           <th>Paterno</th>
           <th>Materno</th>
+          <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
@@ -34,6 +35,11 @@
           <td>${e.nombre}</td>
           <td>${e.paterno}</td>
           <td>${e.materno}</td>
+          <td>
+            <a href="${pageContext.request.contextPath}/empleado/update?trab_id=${e.trab_id}">
+              Editar
+            </a>
+          </td>
         </tr>
         </c:forEach>
       </tbody>
