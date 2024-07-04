@@ -28,6 +28,7 @@ class EmpleadoServiceImpl implements EmpleadoService {
 
     @Override
     Empleado findEmpleadoById(String id) {
-        empleadoJPARepository.findById(id)
+        Optional<Empleado> optional = empleadoJPARepository.findById(id)
+        optional.get()
     }
 }
