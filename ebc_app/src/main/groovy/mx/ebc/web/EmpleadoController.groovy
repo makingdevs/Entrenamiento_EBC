@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.ModelAttribute
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
@@ -25,11 +26,11 @@ class EmpleadoController {
         "empleado/list"
     }
 
-    @GetMapping("/show/:id")
-    String show(@RequestParam("id") String id, Map model){
+    @GetMapping("/show/{id}")
+    String show(@PathVariable("id") String id, Map model){
        Empleado empleado = empleadoService.findEmpleadoById(id)
-        model.empleado = empleado
-        "empleado/show"
+       model.empleado = empleado
+       "empleado/show"
     }
 
     @GetMapping("/create")
