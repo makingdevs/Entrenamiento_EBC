@@ -2,16 +2,6 @@ allprojects {
   repositories {
     mavenCentral()
   }
-  buildscript {
-    repositories {
-      maven {
-        url "https://plugins.gradle.org/m2/"
-      }
-    }
-    dependencies {
-      classpath "org.gretty:gretty:3.0.5"
-    }
-  }
 }
 
 subprojects {
@@ -19,6 +9,10 @@ subprojects {
   apply plugin: 'groovy'
   apply plugin: 'idea'
   apply plugin: 'eclipse'
+
+  repositories {
+    mavenCentral()
+  }
 
   dependencies {
     implementation 'org.codehaus.groovy:groovy:3.0.21'
@@ -70,7 +64,6 @@ project(':web') {
 
 
   apply plugin: 'war'
-  apply plugin: 'application'
   apply plugin: 'org.gretty'
 
   dependencies {
@@ -83,10 +76,6 @@ project(':web') {
       exclude group: 'org.apache.logging.log4j', module: 'log4j-api'
     }
     implementation(group: 'org.apache.poi', name: 'poi-ooxml', version: '4.1.2')
-  }
-
-  application {
-    mainClass = 'mx.ebc.Application'
   }
 
 }
