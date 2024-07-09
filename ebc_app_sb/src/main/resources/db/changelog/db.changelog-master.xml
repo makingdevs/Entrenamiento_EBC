@@ -11,6 +11,7 @@
 
 
     <changeSet id="090720241029" author="neodevelop">
+        <createSequence sequenceName="employee_jj_id_seq" startValue="1" incrementBy="1"/>
         <createTable tableName="EMPLOYEE_JJ">
             <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
