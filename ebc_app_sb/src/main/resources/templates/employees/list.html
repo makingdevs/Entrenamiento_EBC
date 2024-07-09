@@ -15,12 +15,17 @@
             <th>Nombre</th>
             <th>Apellido</th>
             <th>Email</th>
+            <th>Acciones</th>
         </tr>
         <tr th:each="employee : ${employees}">
             <td th:text="${employee.id}"></td>
             <td th:text="${employee.firstName}"></td>
             <td th:text="${employee.lastName}"></td>
             <td th:text="${employee.email}"></td>
+            <td>
+                <a th:href="@{'/employees/edit/' + ${employee.id}}">Editar</a>
+                <a th:href="@{'/employees/delete/' + ${employee.id}}">Eliminar</a>
+            </td>
         </tr>
     </table>
 </body>
