@@ -21,14 +21,14 @@ class EmployeeController {
     "employees/list"
   }
 
-  @GetMapping
+  @GetMapping("/new")
   String employeeForm(Map map){
     map.employee = new Employee()
     "employees/form"
   }
 
   @PostMapping
-  String saveEmployee(@ModelAttribute Employee employee){
+  String saveEmployee(@ModelAttribute("employee") Employee employee){
     employeeRepository.save(employee)
     "redirect:/employees"
   }
