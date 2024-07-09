@@ -10,7 +10,7 @@
         http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
 
 
-<changeSet id="090720241029" author="neodevelop">
+    <changeSet id="090720241029" author="neodevelop">
         <createTable tableName="EMPLOYEE_JJ">
             <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
