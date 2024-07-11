@@ -24,5 +24,5 @@ class Employee {
   String email
 
   @OneToMany(targetEntity = Address)
-  List<Address> addresses
+  List<Address> addresses = []
 }
