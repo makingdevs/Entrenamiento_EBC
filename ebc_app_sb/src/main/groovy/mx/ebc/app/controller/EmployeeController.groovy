@@ -2,6 +2,7 @@ package mx.ebc.app.controller
 
 import mx.ebc.app.model.Employee
 import mx.ebc.app.repository.EmployeeRepository
+import mx.ebc.app.service.MailService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.GetMapping
@@ -15,11 +16,19 @@ import org.springframework.web.bind.annotation.RequestMapping
 class EmployeeController {
   @Autowired
   EmployeeRepository employeeRepository
+  @Autowired
+  MailService mailService
 
   @GetMapping
   String listEmployees(Map map){
     map.employees = employeeRepository.findAll()
     "employees/list"
+  }
+
+  @GetMapping("/report")
+  String employeeReport(Map map){
+    mailService.sendSimpleMessage("juan@makingdevs.com", "Saludos", "Saludos desde la APP")
+    "redirect:/employees"
   }
 
   @GetMapping("/new")
