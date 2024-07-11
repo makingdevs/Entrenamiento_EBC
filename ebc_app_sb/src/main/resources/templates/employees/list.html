@@ -7,7 +7,7 @@
 <body>
     <h1>Lista de empleados</h1>
 
-    <a th:href="@{/employees/new}">Nuevo empleado</a>
+    <a th:href="@{/empleados/new}">Nuevo empleado</a>
 
     <table>
         <tr>
@@ -23,8 +23,8 @@
             <td th:text="${employee.lastName}"></td>
             <td th:text="${employee.email}"></td>
             <td>
-                <a th:href="@{'/employees/edit/' + ${employee.id}}">Editar</a>
-                <a th:href="@{'/employees/delete/' + ${employee.id}}">Eliminar</a>
+                <a th:href="@{'/empleados/edit/' + ${employee.id}}">Editar</a>
+                <a th:href="@{'/empleados/delete/' + ${employee.id}}">Eliminar</a>
             </td>
         </tr>
     </table>
