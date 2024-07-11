@@ -4,6 +4,7 @@ import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
+import javax.persistence.JoinColumn
 import javax.persistence.ManyToOne
 import javax.persistence.SequenceGenerator
 import javax.persistence.Table
@@ -20,5 +21,6 @@ class Address {
   String zipCode
 
   @ManyToOne
+  @JoinColumn(name="empleado_id", nullable = false)
   Employee employee
 }

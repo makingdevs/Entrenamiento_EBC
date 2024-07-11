@@ -2,6 +2,7 @@ package mx.ebc.app.model
 
 import javax.persistence.Column
 import javax.persistence.Entity
+import javax.persistence.FetchType
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
@@ -23,6 +24,6 @@ class Employee {
   String lastName
   String email
 
-  @OneToMany(targetEntity = Address)
-  List<Address> addresses = []
+  @OneToMany(mappedBy = "ADDRESS_JJ", fetch = FetchType.EAGER)
+  List<Address> addresses
 }

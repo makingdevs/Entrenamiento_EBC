@@ -17,7 +17,6 @@ class EmployeeService {
   Employee addAddressToEmployee(Integer employeeId, Address address){
     Employee employee = employeeRepository.findById(employeeId).orElseThrow({
       new RuntimeException("No se encuentra el empleado")})
-    employee.getAddresses()
     employee.addresses << address
     employeeRepository.save(employee)
   }
