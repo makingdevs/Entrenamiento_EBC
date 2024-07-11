@@ -27,4 +27,12 @@
         </createTable>
     </changeSet>
 
+    <changeSet id="110720241121" author="neodevelop">
+        <addColumn tableName="ADDRESS_JJ">
+            <column name="employee_id" type="int"></column>
+        </addColumn>
+        <addForeignKeyConstraint baseTableName="ADDRESS_JJ" baseColumnNames="employee_id" constraintName="fk_employee_address_id" referencedTableName="EMPLOYEE_JJ"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
 </databaseChangeLog>
