@@ -9,25 +9,22 @@
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
         http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
 
-
-    <changeSet id="090720241029" author="neodevelop">
-        <createSequence sequenceName="employee_jj_id_seq" startValue="1" incrementBy="1"/>
-        <createTable tableName="EMPLOYEE_JJ">
+    <changeSet id="110720241103" author="neodevelop">
+        <createSequence sequenceName="address_jj_id_seq" startValue="1" incrementBy="1"/>
+        <createTable tableName="ADDRESS_JJ">
             <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="firstname" type="varchar(255)">
+            <column name="street" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="lastname" type="varchar(255)">
+            <column name="number" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
-            <column name="email" type="varchar(255)">
+            <column name="zipcode" type="varchar(10)">
                 <constraints nullable="false"/>
             </column>
         </createTable>
     </changeSet>
-
-    <include file="classpath:/db/changelog/db.address-changelog.xml"/>
 
 </databaseChangeLog>
