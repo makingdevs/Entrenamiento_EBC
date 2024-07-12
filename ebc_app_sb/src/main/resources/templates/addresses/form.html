@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nueva dirección</title>
+</head>
+<body>
+<h1>Nuevo dirección para <span th:text="${address.employee.firstName + ' ' + address.employee.lastName}"></span></h1>
+<form th:action="@{'/empleados/{id}/addresses'(id=${address.employee.id})}" th:object="${address}" method="post">
+    <label for="street">Street</label>
+    <input type="text" name="street" id="street" th:field="*{street}">
+    <label for="externalNumber">External Number</label>
+    <input type="text" name="externalNumber" id="externalNumber" th:field="*{externalNumber}">
+    <label for="zipCode">Zip Code</label>
+    <input type="text" name="zipCode" id="zipCode" th:field="*{zipCode}">
+
+    <button type="submit">Agregar dirección</button>
+</form>
+
+</body>
+</html>
