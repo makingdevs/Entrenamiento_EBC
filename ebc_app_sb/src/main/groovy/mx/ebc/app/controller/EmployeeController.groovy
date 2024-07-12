@@ -25,10 +25,17 @@ class EmployeeController {
     "employees/list"
   }
 
+  @GetMapping("/{id}")
+  String showEmployee(@PathVariable("id") Integer id, Map model){
+    Employee employee = employeeRepository.findByIdWithAddresses(id)?.get()
+    model.employee = employee
+    "employees/show"
+  }
+
   @GetMapping("/report")
   String employeeReport(Map map){
     mailService.sendSimpleMessage("juan@makingdevs.com", "Saludos", "Saludos desde la APP")
-    "redirect:/employees"
+    "redirect:/empleados"
   }
 
   @GetMapping("/new")
@@ -40,7 +47,7 @@ class EmployeeController {
   @PostMapping
   String saveEmployee(@ModelAttribute("employee") Employee employee){
     employeeRepository.save(employee)
-    "redirect:/employees"
+    "redirect:/empleados"
   }
 
   @GetMapping("/edit/{id}")
@@ -56,6 +63,6 @@ class EmployeeController {
     Employee employee = employeeRepository.findById(id).orElseThrow({
       new RuntimeException("No se encuentra el empleado")})
     employeeRepository.delete(employee)
-    "redirect:/employees"
+    "redirect:/empleados"
   }
 }
