@@ -10,13 +10,13 @@ import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
 @Service
+@Transactional
 class EmployeeService {
   @Autowired
   EmployeeRepository employeeRepository
   @Autowired
   AddressRepository addressRepository
 
-  @Transactional
   Employee addAddressToEmployee(Integer employeeId, Address address){
     Employee employee = employeeRepository.findByIdWithAddresses(employeeId)?.get()
     employee.addresses << address
@@ -25,7 +25,6 @@ class EmployeeService {
     employeeRepository.save(employee)
   }
 
-  @Transactional
   Employee addManyAddresesToEmployee(Integer employeeId, List<Address> addresses) {
     addresses.collect { address -> addAddressToEmployee(employeeId, address) }.last()
   }
