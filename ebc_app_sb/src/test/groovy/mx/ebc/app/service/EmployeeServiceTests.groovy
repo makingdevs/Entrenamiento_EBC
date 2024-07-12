@@ -42,4 +42,18 @@ class EmployeeServiceTests {
 
     assert updatedEmployee.addresses
   }
+
+  @Test
+  @Order(3)
+  void testAddMoreAddressesToEmployee(){
+    assert this.employeeId
+    // Creo un posible Address
+    Address address1 = new Address(street: "Some ${new Random().nextInt()}", externalNumber: "number", zipCode: "12346")
+    Address address2 = new Address(street: "Some ${new Random().nextInt()}", externalNumber: "number", zipCode: "12347")
+
+    employeeService.addAddressToEmployee(this.employeeId, address1)
+    Employee updatedEmployee = employeeService.addAddressToEmployee(this.employeeId, address2)
+
+    assert updatedEmployee.addresses
+  }
 }
