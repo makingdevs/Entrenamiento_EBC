@@ -19,7 +19,11 @@
             <th>Acciones</th>
         </tr>
         <tr th:each="employee : ${employees}">
-            <td th:text="${employee.id}"></td>
+            <td>
+                <a th:href="@{'/empleados/' + ${employee.id}}">
+                    <span th:text="${employee.id}"></span>
+                </a>
+            </td>
             <td th:text="${employee.firstName}"></td>
             <td th:text="${employee.lastName}"></td>
             <td th:text="${employee.email}"></td>
