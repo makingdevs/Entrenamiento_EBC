@@ -24,4 +24,9 @@ class EmployeeService {
     addressRepository.save(address)
     employeeRepository.save(employee)
   }
+
+  @Transactional
+  Employee addManyAddresesToEmployee(Integer employeeId, List<Address> addresses) {
+    addresses.collect { address -> addAddressToEmployee(employeeId, address) }.last()
+  }
 }
