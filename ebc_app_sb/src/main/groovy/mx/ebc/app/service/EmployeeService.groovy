@@ -13,10 +13,15 @@ import org.springframework.transaction.annotation.Transactional
 class EmployeeService {
   @Autowired
   EmployeeRepository employeeRepository
+  @Autowired
+  AddressRepository addressRepository
 
+  @Transactional
   Employee addAddressToEmployee(Integer employeeId, Address address){
     Employee employee = employeeRepository.findByIdWithAddresses(employeeId)?.get()
     employee.addresses << address
+    address.employee = employee
+    addressRepository.save(address)
     employeeRepository.save(employee)
   }
 }
