@@ -10,6 +10,9 @@
   <h2 th:text="${employee.lastName}"></h2>
   <h2 th:text="${employee.email}"></h2>
 
+  <a th:href="@{'/empleados/{id}/addresses'(id=${employee.id})}">Agrega una dirección</a>
+  &nbsp;
+  <a th:href="@{/empleados}">Regresar a la lista</a>
   <h3>Addresses</h3>
   <table>
       <tr>
