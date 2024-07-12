@@ -17,10 +17,10 @@ class Address {
   @SequenceGenerator(name="address_generator", sequenceName = "address_jj_id_seq", allocationSize = 1)
   Long id
   String street
-  String number
+  String externalNumber
   String zipCode
 
   @ManyToOne
-  @JoinColumn(name="empleado_id", nullable = false)
+  @JoinColumn(name="employee_id", nullable = false)
   Employee employee
 }

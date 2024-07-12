@@ -24,6 +24,6 @@ class Employee {
   String lastName
   String email
 
-  @OneToMany(mappedBy = "ADDRESS_JJ", fetch = FetchType.EAGER)
-  List<Address> addresses
+  @OneToMany(mappedBy = "employee")
+  List<Address> addresses = []
 }
