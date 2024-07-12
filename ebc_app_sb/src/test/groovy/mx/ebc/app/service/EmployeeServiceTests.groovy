@@ -38,7 +38,9 @@ class EmployeeServiceTests {
     assert this.employeeId
     // Creo un posible Address
     Address address = new Address(street: "Some", externalNumber: "number", zipCode: "12345")
+    println "*"*50
     Employee updatedEmployee = employeeService.addAddressToEmployee(this.employeeId, address)
+    println "*"*50
 
     assert updatedEmployee.addresses
   }
@@ -51,7 +53,9 @@ class EmployeeServiceTests {
     Address address1 = new Address(street: "Some ${new Random().nextInt()}", externalNumber: "number", zipCode: "12346")
     Address address2 = new Address(street: "Some ${new Random().nextInt()}", externalNumber: "number", zipCode: "12347")
 
+    println "-"*50
     Employee updatedEmployee = employeeService.addManyAddresesToEmployee(this.employeeId, [address1, address2])
+    println "-"*50
 
     assert updatedEmployee.addresses
   }
