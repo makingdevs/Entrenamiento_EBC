@@ -51,8 +51,7 @@ class EmployeeServiceTests {
     Address address1 = new Address(street: "Some ${new Random().nextInt()}", externalNumber: "number", zipCode: "12346")
     Address address2 = new Address(street: "Some ${new Random().nextInt()}", externalNumber: "number", zipCode: "12347")
 
-    employeeService.addAddressToEmployee(this.employeeId, address1)
-    Employee updatedEmployee = employeeService.addAddressToEmployee(this.employeeId, address2)
+    Employee updatedEmployee = employeeService.addManyAddresesToEmployee(this.employeeId, [address1, address2])
 
     assert updatedEmployee.addresses
   }
