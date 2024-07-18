@@ -9,5 +9,8 @@ class EmployeeJJ {
   Boolean active
 
   static constraints = {
+    name(blank: false, minSize: 4)
+    lastName(blank: false, minSize: 4)
+    weight(blank: false, min: 10)
   }
 }

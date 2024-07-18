@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-    <meta name="layout" content="login"/>
+    <meta name="layout" content="main"/>
     <title>Welcome to EBC</title>
 </head>
 <body>
