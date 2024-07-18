@@ -9,13 +9,10 @@
     <div id="content" role="main">
         <div class="container">
             <section class="row">
-								<div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
-									<div class="card-header">NOT FOUND</div>
-									<div class="card-body">
-										<h5 class="card-title">Error: Page Not Found (404)</h5>
-										<p class="card-text">Path: ${request.forwardURI}</p>
-									</div>
-								</div>
+                <div class="alert alert-danger" role="alert">
+                  <strong>NO ENCONTRADO</strong>
+                   ${request.forwardURI}
+                </div>
             </section>
         </div>
     </div>
