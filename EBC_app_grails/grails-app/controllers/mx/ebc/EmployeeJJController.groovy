@@ -11,6 +11,7 @@ class EmployeeJJController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
+				log.debug params.max
         respond employeeJJService.list(params), model:[employeeJJCount: employeeJJService.count()]
     }
 
@@ -37,7 +38,8 @@ class EmployeeJJController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'employeeJJ.label', default: 'EmployeeJJ'), employeeJJ.id])
+                flash.message = message(code: 'default.created.message', args: ["${employeeJJ.name} ${employeeJJ.lastName}", employeeJJ.id])
+                // flash.message = "Empleado '${employeeJJ.name} ${employeeJJ.lastName}' Creado con éxito!!!!"
                 redirect employeeJJ
             }
             '*' { respond employeeJJ, [status: CREATED] }
