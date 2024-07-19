@@ -1,12 +1,44 @@
 databaseChangeLog = {
 
-    changeSet(author: "makingdevs (generated)", id: "1721329318766-1") {
-        createSequence(incrementBy: "1", sequenceName: "hibernate_sequence", startValue: "1")
+    changeSet(author: "makingdevs (generated)", id: "1721409095982-1") {
+        createTable(tableName: "addressjj") {
+            column(name: "id", type: "NUMBER(19, 0)") {
+                constraints(nullable: "false", primaryKey: "true", primaryKeyName: "addressjjPK")
+            }
+
+            column(name: "version", type: "NUMBER(19, 0)") {
+                constraints(nullable: "false")
+            }
+
+            column(name: "external_number", type: "VARCHAR(255 CHAR)") {
+                constraints(nullable: "false")
+            }
+
+            column(name: "date_created", type: "timestamp") {
+                constraints(nullable: "false")
+            }
+
+            column(name: "last_updated", type: "timestamp") {
+                constraints(nullable: "false")
+            }
+
+            column(name: "street", type: "VARCHAR(255 CHAR)") {
+                constraints(nullable: "false")
+            }
+
+            column(name: "zip_code", type: "VARCHAR(255 CHAR)") {
+                constraints(nullable: "false")
+            }
+
+            column(name: "employee_id", type: "NUMBER(19, 0)") {
+                constraints(nullable: "false")
+            }
+        }
     }
 
-    changeSet(author: "makingdevs (generated)", id: "1721329318766-2") {
+    changeSet(author: "makingdevs (generated)", id: "1721409095982-2") {
         createTable(tableName: "employeejj") {
-            column(autoIncrement: "true", name: "id", type: "NUMBER(19, 0)") {
+            column(name: "id", type: "NUMBER(19, 0)") {
                 constraints(nullable: "false", primaryKey: "true", primaryKeyName: "employeejjPK")
             }
 
@@ -42,5 +74,9 @@ databaseChangeLog = {
                 constraints(nullable: "false")
             }
         }
+    }
+
+    changeSet(author: "makingdevs (generated)", id: "1721409095982-3") {
+        addForeignKeyConstraint(baseColumnNames: "employee_id", baseTableName: "addressjj", constraintName: "FK5drwtfgfk25trnb1xh6f7rvul", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "employeejj", validate: "true")
     }
 }
