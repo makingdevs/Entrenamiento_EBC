@@ -20,7 +20,6 @@ class Employee {
   }
 
   static mapping =  {
-    id generator: 'uuid'
     table 'employeejj'
   }
 }

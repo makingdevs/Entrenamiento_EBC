@@ -1,8 +1,12 @@
 databaseChangeLog = {
 
-    changeSet(author: "makingdevs (generated)", id: "1721409095982-1") {
+    //changeSet(author: "makingdevs (generated)", id: "1721410850237-1") {
+    //    createSequence(incrementBy: "1", sequenceName: "hibernate_sequence", startValue: "1")
+    //}
+
+    changeSet(author: "makingdevs (generated)", id: "1721410850237-2") {
         createTable(tableName: "addressjj") {
-            column(name: "id", type: "NUMBER(19, 0)") {
+            column(autoIncrement: "true", name: "id", type: "NUMBER(19, 0)") {
                 constraints(nullable: "false", primaryKey: "true", primaryKeyName: "addressjjPK")
             }
 
@@ -36,9 +40,9 @@ databaseChangeLog = {
         }
     }
 
-    changeSet(author: "makingdevs (generated)", id: "1721409095982-2") {
+    changeSet(author: "makingdevs (generated)", id: "1721410850237-3") {
         createTable(tableName: "employeejj") {
-            column(name: "id", type: "NUMBER(19, 0)") {
+            column(autoIncrement: "true", name: "id", type: "NUMBER(19, 0)") {
                 constraints(nullable: "false", primaryKey: "true", primaryKeyName: "employeejjPK")
             }
 
@@ -76,7 +80,7 @@ databaseChangeLog = {
         }
     }
 
-    changeSet(author: "makingdevs (generated)", id: "1721409095982-3") {
+    changeSet(author: "makingdevs (generated)", id: "1721410850237-4") {
         addForeignKeyConstraint(baseColumnNames: "employee_id", baseTableName: "addressjj", constraintName: "FK5drwtfgfk25trnb1xh6f7rvul", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "employeejj", validate: "true")
     }
 }

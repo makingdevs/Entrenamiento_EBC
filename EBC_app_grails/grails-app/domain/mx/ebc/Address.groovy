@@ -14,11 +14,10 @@ class Address {
   static constraints = {
     street()
     externalNumber()
-    zipCode(size: 5)
+    zipCode(size: 5..5)
   }
 
   static mapping = {
-    id generator: 'uuid'
     table 'addressjj'
   }
 
