@@ -3,34 +3,34 @@ package mx.ebc
 import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
 
-class EmployeeJJController {
+class EmployeeController {
 
-    EmployeeJJService employeeJJService
+    EmployeeService employeeService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
 				log.debug params.max
-        respond employeeJJService.list(params), model:[employeeJJCount: employeeJJService.count()]
+        respond employeeService.list(params), model:[employeeJJCount: employeeService.count()]
     }
 
     def show(Long id) {
-        respond employeeJJService.get(id)
+        respond employeeService.get(id)
     }
 
     def create() {
-        respond new EmployeeJJ(params)
+        respond new Employee(params)
     }
 
-    def save(EmployeeJJ employeeJJ) {
+    def save(Employee employeeJJ) {
         if (employeeJJ == null) {
             notFound()
             return
         }
 
         try {
-            employeeJJService.save(employeeJJ)
+            employeeService.save(employeeJJ)
         } catch (ValidationException e) {
             respond employeeJJ.errors, view:'create'
             return
@@ -47,17 +47,17 @@ class EmployeeJJController {
     }
 
     def edit(Long id) {
-        respond employeeJJService.get(id)
+        respond employeeService.get(id)
     }
 
-    def update(EmployeeJJ employeeJJ) {
+    def update(Employee employeeJJ) {
         if (employeeJJ == null) {
             notFound()
             return
         }
 
         try {
-            employeeJJService.save(employeeJJ)
+            employeeService.save(employeeJJ)
         } catch (ValidationException e) {
             respond employeeJJ.errors, view:'edit'
             return
@@ -65,7 +65,7 @@ class EmployeeJJController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'employeeJJ.label', default: 'EmployeeJJ'), employeeJJ.id])
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'employeeJJ.label', default: 'Employee'), employeeJJ.id])
                 redirect employeeJJ
             }
             '*'{ respond employeeJJ, [status: OK] }
@@ -78,11 +78,11 @@ class EmployeeJJController {
             return
         }
 
-        employeeJJService.delete(id)
+        employeeService.delete(id)
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'employeeJJ.label', default: 'EmployeeJJ'), id])
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'employeeJJ.label', default: 'Employee'), id])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
@@ -92,7 +92,7 @@ class EmployeeJJController {
     protected void notFound() {
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'employeeJJ.label', default: 'EmployeeJJ'), params.id])
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'employeeJJ.label', default: 'Employee'), params.id])
                 redirect action: "index", method: "GET"
             }
             '*'{ render status: NOT_FOUND }

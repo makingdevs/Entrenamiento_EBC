@@ -1,6 +1,6 @@
 package mx.ebc
 
-class EmployeeJJ {
+class Employee {
 
   String name
   String lastName
@@ -15,5 +15,9 @@ class EmployeeJJ {
     name(blank: false, minSize: 4)
     lastName(blank: false, minSize: 4)
     weight(blank: false, min: 10)
+  }
+
+  static mapping =  {
+    table 'employeejj'
   }
 }

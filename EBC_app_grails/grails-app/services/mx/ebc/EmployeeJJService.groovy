@@ -2,17 +2,17 @@ package mx.ebc
 
 import grails.gorm.services.Service
 
-@Service(EmployeeJJ)
-interface EmployeeJJService {
+@Service(Employee)
+interface EmployeeService {
 
-    EmployeeJJ get(Serializable id)
+    Employee get(Serializable id)
 
-    List<EmployeeJJ> list(Map args)
+    List<Employee> list(Map args)
 
     Long count()
 
     void delete(Serializable id)
 
-    EmployeeJJ save(EmployeeJJ employeeJJ)
+    Employee save(Employee employee)
 
 }
