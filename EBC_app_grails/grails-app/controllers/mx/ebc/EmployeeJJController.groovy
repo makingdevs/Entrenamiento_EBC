@@ -11,7 +11,7 @@ class EmployeeController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-				log.debug params.max
+        params.each { log.info "${it}" }
         respond employeeService.list(params), model:[employeeJJCount: employeeService.count()]
     }
 
@@ -24,6 +24,7 @@ class EmployeeController {
     }
 
     def save(Employee employeeJJ) {
+        params.each { log.info "${it}" }
         if (employeeJJ == null) {
             notFound()
             return
