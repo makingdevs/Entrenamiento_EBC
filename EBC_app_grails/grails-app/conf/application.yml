@@ -143,5 +143,5 @@ environments:
 grails:
     plugin:
         databasemigration:
-            databaseChangeLogTableName: dbchangelog_JJ_grails
-            databaseChangeLogLockTableName: dbchangeloglock_JJ_grails
+            databaseChangeLogTableName: DBCHANGELOG_JJ_GRAILS
+            databaseChangeLogLockTableName: DBCHANGELOGLOCK_JJ_GRAILS
