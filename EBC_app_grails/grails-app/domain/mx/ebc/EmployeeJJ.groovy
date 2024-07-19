@@ -8,6 +8,9 @@ class EmployeeJJ {
   Integer weight
   Boolean active
 
+  Date dateCreated
+  Date lastUpdated
+
   static constraints = {
     name(blank: false, minSize: 4)
     lastName(blank: false, minSize: 4)
