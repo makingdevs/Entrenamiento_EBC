@@ -11,6 +11,8 @@ class Employee {
   Date dateCreated
   Date lastUpdated
 
+  static hasMany = [addresses: Address]
+
   static constraints = {
     name(blank: false, minSize: 4)
     lastName(blank: false, minSize: 4)
@@ -18,6 +20,7 @@ class Employee {
   }
 
   static mapping =  {
+    id generator: 'uuid'
     table 'employeejj'
   }
 }
