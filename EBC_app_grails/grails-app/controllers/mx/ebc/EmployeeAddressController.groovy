@@ -11,7 +11,7 @@ class EmployeeAddressController {
   static allowedMethods = [saveAddress: "POST"]
 
   def index() {
-    log.info "${allTermsSp}"
+    log.info "${allTermsSp.execute("202420")}"
     [
       message: "Hola mundo ${new Date()}",
       employees: employeeService.list([:])
