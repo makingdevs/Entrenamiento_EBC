@@ -2,13 +2,12 @@ package mx.ebc
 
 class EmployeeAddressController {
 
-  def dataSource
+  EmployeeService employeeService
 
   def index() {
     [
       message: "Hola mundo ${new Date()}",
-      dataSource: dataSource,
-      employees: []
+      employees: employeeService.list([:])
     ]
   }
 }
