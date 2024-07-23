@@ -35,47 +35,29 @@
     <g:else>
       <h3>Sin direcciones</h3>
     </g:else>
+    <g:form name="address" action="saveAddress" method="POST">
+      <g:hiddenField name="employeeId" value="${e.id}"/>
+      <table>
+        <thead>
+          <tr>
+            <th>Street</th>
+            <th>External Number</th>
+            <th>Zip Code</th>
+            <th>&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><g:textField name="street"/></td>
+            <td><g:textField name="externalNumber"/></td>
+            <td><g:textField name="zipCode"/></td>
+            <td><g:submitButton name="save" value="Save"/></td>
+          </tr>
+        </tbody>
+      </table>
+    </g:form>
   </g:each>
 
-  <table>
-    <tr>
-      <td>Address</td>
-    </tr>
-    <tr>
-      <td>Address1</td>
-    </tr>
-    <tr>
-      <td>Address2</td>
-    </tr>
-  </table>
-
-  <h3>Employee 2 </h3>
-
-  <table>
-    <tr>
-      <td>Address</td>
-    </tr>
-    <tr>
-      <td>Address1</td>
-    </tr>
-    <tr>
-      <td>Address2</td>
-    </tr>
-  </table>
-
-  <h3>Employee 3 </h3>
-
-  <table>
-    <tr>
-      <td>Address</td>
-    </tr>
-    <tr>
-      <td>Address1</td>
-    </tr>
-    <tr>
-      <td>Address2</td>
-    </tr>
-  </table>
 
 </body>
 </html>
