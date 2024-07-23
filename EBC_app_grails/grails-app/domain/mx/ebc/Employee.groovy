@@ -14,7 +14,7 @@ class Employee {
   static hasMany = [addresses: Address]
 
   static constraints = {
-    name(blank: false, minSize: 4)
+    name(blank: false, minSize: 3)
     lastName(blank: false, minSize: 4)
     weight(blank: false, min: 10)
   }
