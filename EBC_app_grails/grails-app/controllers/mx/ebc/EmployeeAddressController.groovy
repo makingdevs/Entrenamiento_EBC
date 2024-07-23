@@ -1,13 +1,17 @@
 package mx.ebc
 
+import mx.ebc.sp.AllTermsSP
+
 class EmployeeAddressController {
 
   EmployeeService employeeService
   AddressService addressService
+  AllTermsSP allTermsSp
 
   static allowedMethods = [saveAddress: "POST"]
 
   def index() {
+    log.info "${allTermsSp}"
     [
       message: "Hola mundo ${new Date()}",
       employees: employeeService.list([:])
