@@ -17,7 +17,7 @@ class BootStrap {
           id: record[0].toInteger(),
           name: record[1],
           lastName:  record[2],
-          bornDate: Date.parse("dd/mm/yyyy", record[3]),
+          bornDate: new Date().parse("dd/mm/yyyy", record[3]),
           weight: record[4].toInteger(),
           active: record[5].toBoolean()
         )
