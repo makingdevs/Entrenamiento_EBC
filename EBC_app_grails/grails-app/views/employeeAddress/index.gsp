@@ -5,10 +5,34 @@
   <title>Employee And Address</title>
 </head>
 <body>
-  <h1>${message}</h1>
-  <h2>${dataSource}</h2>
+  <h1>Employees and Address</h1>
 
-  <h3>Employee 1 </h3>
+  <g:each in="${employees}" var="e">
+    <h2>${e.name} ${e.lastName}</h2>
+    <g:if test="${e.addresses}">
+      <table>
+        <thead>
+          <tr>
+            <th>Street</th>
+            <th>External Number</th>
+            <th>Zip Code</th>
+          </tr>
+        </thead>
+        <tbody>
+          <g:each in="${e.addresses}" var="a">
+            <tr>
+              <td>${a.street}</td>
+              <td>${a.externalNumber}</td>
+              <td>${a.zipCode}</td>
+            </tr>
+          </g:each>
+        </tbody>
+      </table>
+    </g:if>
+    <g:else>
+      <h3>Sin direcciones</h3>
+    </g:else>
+  </g:each>
 
   <table>
     <tr>
