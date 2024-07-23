@@ -6,6 +6,9 @@
 </head>
 <body>
   <h1>Employees and Address</h1>
+  <g:if test="${flash.message}">
+    <div class="message" role="status">${flash.message}</div>
+  </g:if>
 
   <g:each in="${employees}" var="e">
     <h2>${e.name} ${e.lastName}</h2>
