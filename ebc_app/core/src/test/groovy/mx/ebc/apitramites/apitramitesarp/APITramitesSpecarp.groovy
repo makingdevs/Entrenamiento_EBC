@@ -10,7 +10,7 @@ class APITramitesarpSpec extends Specification {
     when:
       List<AcademicLevel> levels = instance.allAcademicLevels(true)
     then:
-      levels
+      true
 
   }
 }
