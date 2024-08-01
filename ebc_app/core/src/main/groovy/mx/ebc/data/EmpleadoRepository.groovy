@@ -24,22 +24,22 @@ class EmpleadoRepository {
   } as RowMapper<Empleado>
 
   Integer countEmpleados(){
-    jdbcTemplate.queryForObject('SELECT COUNT(*) as num FROM EMPLEADOSPRUEBA', Integer)
+    jdbcTemplate.queryForObject('SELECT COUNT(*) as num FROM EMPLEADOS', Integer)
   }
 
   Integer createEmpleado(Empleado empleado) {
-    String insertQuery = "INSERT INTO EMPLEADOSPRUEBA(NOMBRE, PATERNO, MATERNO, TRAB_ID) VALUES(?, ?, ?, ?)"
+    String insertQuery = "INSERT INTO EMPLEADOS(NOMBRE, PATERNO, MATERNO, TRAB_ID) VALUES(?, ?, ?, ?)"
     jdbcTemplate.update(insertQuery, empleado.nombre, empleado.paterno, empleado.materno, empleado.trab_id)
   }
 
   List<Empleado> listEmpleados() {
-    String query = "SELECT TRAB_ID, PATERNO, MATERNO, NOMBRE FROM EMPLEADOSPRUEBA"
+    String query = "SELECT TRAB_ID, PATERNO, MATERNO, NOMBRE FROM EMPLEADOS"
     // jdbcTemplate.query(query, new EmpleadoRowMapper())
     jdbcTemplate.query(query, empleadoMapper)
   }
 
   Empleado findEmpleadoById(String trabId){
-    String query = "SELECT TRAB_ID, PATERNO, MATERNO, NOMBRE FROM EMPLEADOSPRUEBA WHERE TRAB_ID = ?"
+    String query = "SELECT TRAB_ID, PATERNO, MATERNO, NOMBRE FROM EMPLEADOS WHERE TRAB_ID = ?"
     jdbcTemplate.queryForObject(query, empleadoMapper, trabId)
   }
 
