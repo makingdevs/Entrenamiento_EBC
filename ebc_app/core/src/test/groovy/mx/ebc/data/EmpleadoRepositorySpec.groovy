@@ -8,8 +8,12 @@ import mx.ebc.config.DataConfig
 import javax.sql.DataSource
 import org.springframework.jdbc.core.JdbcTemplate
 import mx.ebc.model.Empleado
+import org.springframework.test.annotation.Rollback
+import org.springframework.transaction.annotation.Transactional
 
 @ContextConfiguration(classes = [DataConfig])
+@Transactional
+@Rollback(true)
 class EmpleadoRepositorySpec extends Specification {
 
   @Autowired
@@ -45,7 +49,9 @@ class EmpleadoRepositorySpec extends Specification {
 
   void "should create a new Employee"() {
     given:
+      id = new Random().nextLong().toString()
       Empleado e = new Empleado(
+        trab_id: id,
         nombre: "Juan",
         materno: "Zuniga",
         paterno: "Reyes")
@@ -58,11 +64,27 @@ class EmpleadoRepositorySpec extends Specification {
   }
 
   void "should retrieve de number of employees"() {
+    given:
+      id = new Random().nextLong().toString()
+      Empleado e = new Empleado(
+        trab_id: id,
+        nombre: "Juan",
+        materno: "Zuniga",
+        paterno: "Reyes")
+      empleadoRepository.createEmpleado(e)
     expect:
       empleadoRepository.countEmpleados()
   }
 
   void "should retrieve a List of Employees"() {
+    given:
+      id = new Random().nextLong().toString()
+      Empleado e = new Empleado(
+        trab_id: id,
+        nombre: "Juan",
+        materno: "Zuniga",
+        paterno: "Reyes")
+      empleadoRepository.createEmpleado(e)
     when:
       List<Empleado> empleados = empleadoRepository.listEmpleados()
       println empleados
@@ -74,15 +96,21 @@ class EmpleadoRepositorySpec extends Specification {
 
   void "should retrieve one Employee"() {
     given:
-    String trabId = "1"
+      id = new Random().nextLong().toString()
+      Empleado e = new Empleado(
+        trab_id: id,
+        nombre: "Juan",
+        materno: "Zuniga",
+        paterno: "Reyes")
+      empleadoRepository.createEmpleado(e)
 
     when:
     Empleado empleado = empleadoRepository.findEmpleadoById(trabId)
 
     then:
     empleado
-    empleado.trab_id == "1"
-    empleado.nombre == "Reyna"
+    empleado.trab_id == id
+    empleado.nombre == "Juan"
   }
 
   void "should retrieve a term codes"() {

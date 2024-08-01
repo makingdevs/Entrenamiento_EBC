@@ -6,8 +6,12 @@ import mx.ebc.model.Empleado
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.test.context.ContextConfiguration
 import spock.lang.Specification
+import org.springframework.transaction.annotation.Transactional
+import org.springframework.test.annotation.Rollback
 
 @ContextConfiguration(classes = [DataJpaConfig])
+@Transactional
+@Rollback(true)
 class EmpleadoJpaRepositorySpec extends Specification {
 
   @Autowired
@@ -37,14 +41,30 @@ class EmpleadoJpaRepositorySpec extends Specification {
   }
 
   void "should retrieve de number of employees"() {
+    given:
+      id = new Random().nextLong().toString()
+      Empleado e = new Empleado(
+        trab_id: id,
+        nombre: "Juan",
+        materno: "Zuniga",
+        paterno: "Reyes")
+      Empleado empleadoCreado = empleadoJPARepository.save(e)
+
     expect:
       empleadoJPARepository.count()
   }
 
   void "should retrieve a List of Employees"() {
+    given:
+      id = new Random().nextLong().toString()
+      Empleado e = new Empleado(
+        trab_id: id,
+        nombre: "Juan",
+        materno: "Zuniga",
+        paterno: "Reyes")
+      Empleado empleadoCreado = empleadoJPARepository.save(e)
     when:
       List<Empleado> empleados = empleadoJPARepository.findAll()
-      println empleados
 
     then:
       empleados
@@ -53,7 +73,13 @@ class EmpleadoJpaRepositorySpec extends Specification {
 
   void "should retrieve one Employee"() {
     given:
-    String trabId = id
+      id = new Random().nextLong().toString()
+      Empleado e = new Empleado(
+        trab_id: id,
+        nombre: "Juan",
+        materno: "Zuniga",
+        paterno: "Reyes")
+      Empleado empleadoCreado = empleadoJPARepository.save(e)
 
     when:
     Optional<Empleado> optionalEmpleado = empleadoJPARepository.findById(trabId)
@@ -66,7 +92,13 @@ class EmpleadoJpaRepositorySpec extends Specification {
 
   void "should retrieve one Employee by 'Nombre'"() {
     given:
-    String nombre = "Juan"
+      id = new Random().nextLong().toString()
+      Empleado e = new Empleado(
+        trab_id: id,
+        nombre: "Juan",
+        materno: "Zuniga",
+        paterno: "Reyes")
+      Empleado empleadoCreado = empleadoJPARepository.save(e)
 
     when:
     Optional<Empleado> optionalEmpleado = empleadoJPARepository.findByNombre(nombre)
@@ -74,13 +106,18 @@ class EmpleadoJpaRepositorySpec extends Specification {
     then:
     optionalEmpleado.get()
     optionalEmpleado.get().trab_id == id
-    optionalEmpleado.get().paterno == "Juan"
+    optionalEmpleado.get().paterno == "Reyes"
   }
 
   void "should retrieve one Employee by 'Nombre' and 'Paterno'"() {
     given:
-    String nombre = "Juan"
-    String paterno = "Reyes"
+      id = new Random().nextLong().toString()
+      Empleado e = new Empleado(
+        trab_id: id,
+        nombre: "Juan",
+        materno: "Zuniga",
+        paterno: "Reyes")
+      Empleado empleadoCreado = empleadoJPARepository.save(e)
 
     when:
     Optional<Empleado> optionalEmpleado = empleadoJPARepository.findByNombreAndPaterno(nombre, paterno)
