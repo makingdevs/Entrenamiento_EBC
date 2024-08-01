@@ -49,7 +49,7 @@ class EmpleadoRepositorySpec extends Specification {
 
   void "should create a new Employee"() {
     given:
-      id = new Random().nextLong().toString()
+      String id = new Random().nextLong().toString()
       Empleado e = new Empleado(
         trab_id: id,
         nombre: "Juan",
@@ -65,7 +65,7 @@ class EmpleadoRepositorySpec extends Specification {
 
   void "should retrieve de number of employees"() {
     given:
-      id = new Random().nextLong().toString()
+      String id = new Random().nextLong().toString()
       Empleado e = new Empleado(
         trab_id: id,
         nombre: "Juan",
@@ -78,7 +78,7 @@ class EmpleadoRepositorySpec extends Specification {
 
   void "should retrieve a List of Employees"() {
     given:
-      id = new Random().nextLong().toString()
+      String id = new Random().nextLong().toString()
       Empleado e = new Empleado(
         trab_id: id,
         nombre: "Juan",
@@ -96,7 +96,7 @@ class EmpleadoRepositorySpec extends Specification {
 
   void "should retrieve one Employee"() {
     given:
-      id = new Random().nextLong().toString()
+      String id = new Random().nextLong().toString()
       Empleado e = new Empleado(
         trab_id: id,
         nombre: "Juan",

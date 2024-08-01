@@ -82,7 +82,7 @@ class EmpleadoJpaRepositorySpec extends Specification {
       Empleado empleadoCreado = empleadoJPARepository.save(e)
 
     when:
-    Optional<Empleado> optionalEmpleado = empleadoJPARepository.findById(trabId)
+    Optional<Empleado> optionalEmpleado = empleadoJPARepository.findById(id)
 
     then:
     optionalEmpleado.get()
@@ -101,7 +101,7 @@ class EmpleadoJpaRepositorySpec extends Specification {
       Empleado empleadoCreado = empleadoJPARepository.save(e)
 
     when:
-    Optional<Empleado> optionalEmpleado = empleadoJPARepository.findByNombre(nombre)
+    Optional<Empleado> optionalEmpleado = empleadoJPARepository.findByNombre("Juan")
 
     then:
     optionalEmpleado.get()
@@ -120,7 +120,7 @@ class EmpleadoJpaRepositorySpec extends Specification {
       Empleado empleadoCreado = empleadoJPARepository.save(e)
 
     when:
-    Optional<Empleado> optionalEmpleado = empleadoJPARepository.findByNombreAndPaterno(nombre, paterno)
+    Optional<Empleado> optionalEmpleado = empleadoJPARepository.findByNombreAndPaterno("Juan", "Reyes")
 
     then:
     optionalEmpleado.get()
