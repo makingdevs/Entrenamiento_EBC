@@ -5,7 +5,7 @@ import javax.persistence.Entity
 import javax.persistence.Id
 
 @groovy.transform.ToString
-@Entity(name = "EMPLEADOSPRUEBA")
+@Entity(name = "EMPLEADOS")
 class Empleado {
   @Id
   String trab_id

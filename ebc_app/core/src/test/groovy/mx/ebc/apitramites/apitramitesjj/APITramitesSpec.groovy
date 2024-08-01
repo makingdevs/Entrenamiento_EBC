@@ -22,6 +22,6 @@ class APITramitesSpec extends Specification {
     when:
       EBCPerson person = instance.findPersonBy(0, "a.rescalvo")
     then:
-      person.nombre == "Arturo"
+      person.firstName == "ARTURO"
   }
 }
