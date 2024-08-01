@@ -105,7 +105,7 @@ class EmpleadoRepositorySpec extends Specification {
       empleadoRepository.createEmpleado(e)
 
     when:
-    Empleado empleado = empleadoRepository.findEmpleadoById(trabId)
+    Empleado empleado = empleadoRepository.findEmpleadoById(id)
 
     then:
     empleado

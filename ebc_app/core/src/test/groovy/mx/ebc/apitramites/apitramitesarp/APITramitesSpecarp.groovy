@@ -10,8 +10,6 @@ class APITramitesarpSpec extends Specification {
     when:
       List<AcademicLevel> levels = instance.allAcademicLevels(true)
     then:
-      levels.size() > 0
-      levels.size()
       levels
 
   }
