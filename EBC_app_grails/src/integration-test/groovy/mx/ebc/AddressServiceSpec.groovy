@@ -9,66 +9,70 @@ import org.hibernate.SessionFactory
 @Rollback
 class AddressServiceSpec extends Specification {
 
-    AddressService addressService
-    SessionFactory sessionFactory
+  AddressService addressService
+  SessionFactory sessionFactory
 
-    private Long setupData() {
-        // TODO: Populate valid domain instances and return a valid ID
-        //new Address(...).save(flush: true, failOnError: true)
-        //new Address(...).save(flush: true, failOnError: true)
-        //Address address = new Address(...).save(flush: true, failOnError: true)
-        //new Address(...).save(flush: true, failOnError: true)
-        //new Address(...).save(flush: true, failOnError: true)
-        assert false, "TODO: Provide a setupData() implementation for this generated test suite"
-        //address.id
-    }
+  private List<Employee> setupEmployees(){
+    Employee employee1 = new Employee(name: "Arturo", lastName: "Rescalvo", bornDate: new Date().parse("dd-MM-yyyy", "01-01-1993"), weight: 389, active: true).save(flush: true, failOnError: true)
+    Employee employee2 = new Employee(name: "Reyna", lastName: "Pineda", bornDate: new Date().parse("dd-MM-yyyy", "01-01-1992"), weight: 32, active: true).save(flush: true, failOnError: true)
+    [employee1, employee2]
+  }
 
-    void "test get"() {
-        setupData()
+  private Long setupData() {
+    List<Employee> employees = setupEmployees()
+    new Address(street: "Marsella", externalNumber: "232", zipCode: "04000", employee: employees[0]).save(flush: true, failOnError: true)
+    new Address(street: "Cracovia", externalNumber: "32", zipCode: "04000", employee: employees[1]).save(flush: true, failOnError: true)
+    Address address = new Address(street: "Varsovia", externalNumber: "445", zipCode: "04000", employee: employees[0]).save(flush: true, failOnError: true)
+    new Address(street: "Hamburgo", externalNumber: "445", zipCode: "04000", employee: employees[1]).save(flush: true, failOnError: true)
+    new Address(street: "Orlando", externalNumber: "393", zipCode: "04000", employee: employees[0]).save(flush: true, failOnError: true)
+    address.id
+  }
 
-        expect:
-        addressService.get(1) != null
-    }
+  void "test get"() {
+    Long addressId = setupData()
 
-    void "test list"() {
-        setupData()
+    expect:
+    addressService.get(addressId) != null
+  }
 
-        when:
-        List<Address> addressList = addressService.list(max: 2, offset: 2)
+  void "test list"() {
+    setupData()
 
-        then:
-        addressList.size() == 2
-        assert false, "TODO: Verify the correct instances are returned"
-    }
+    when:
+    List<Address> addressList = addressService.list(max: 2, offset: 2)
 
-    void "test count"() {
-        setupData()
+    then:
+    addressList.size() == 2
+  }
 
-        expect:
-        addressService.count() == 5
-    }
+  void "test count"() {
+    setupData()
 
-    void "test delete"() {
-        Long addressId = setupData()
+    expect:
+    addressService.count() == 5
+  }
 
-        expect:
-        addressService.count() == 5
+  void "test delete"() {
+    Long addressId = setupData()
 
-        when:
-        addressService.delete(addressId)
-        sessionFactory.currentSession.flush()
+    expect:
+    addressService.count() == 5
 
-        then:
-        addressService.count() == 4
-    }
+    when:
+    addressService.delete(addressId)
+    sessionFactory.currentSession.flush()
 
-    void "test save"() {
-        when:
-        assert false, "TODO: Provide a valid instance to save"
-        Address address = new Address()
-        addressService.save(address)
+    then:
+    addressService.count() == 4
+  }
 
-        then:
-        address.id != null
-    }
+  void "test save"() {
+    when:
+    List<Employee> employees = setupEmployees()
+    Address address = new Address(street: "Orlando", externalNumber: "393", zipCode: "04000", employee: employees[1]).save(flush: true, failOnError: true)
+    addressService.save(address)
+
+    then:
+    address.id != null
+  }
 }
