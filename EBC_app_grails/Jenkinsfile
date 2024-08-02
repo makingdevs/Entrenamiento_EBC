@@ -21,7 +21,9 @@ pipeline {
     }
     stage('Test') {
       steps {
-        echo 'Testing..'
+        dir('EBC_app_grails') {
+          sh "./grailsw test-app"
+        }
       }
     }
     stage('Deploy') {
