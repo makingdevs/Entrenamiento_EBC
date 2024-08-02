@@ -23,10 +23,10 @@ class EmployeeServiceSpec extends Specification {
   }
 
   void "test get"() {
-    setupData()
+    Long employeeId = setupData()
 
     expect:
-    employeeService.get(1) != null
+    employeeService.get(employeeId) != null
   }
 
   void "test list"() {
