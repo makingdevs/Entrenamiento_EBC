@@ -43,7 +43,7 @@ pipeline {
 
   post {
     always {
-      echo "Proceso completado a las ${new Date()}"
+      slackSend(channel: '#general', message: "Construcción completada - Resultado: ${currentBuild.currentResult}")
     }
     success {
       echo "Proceso con éxito a las ${new Date()}"
