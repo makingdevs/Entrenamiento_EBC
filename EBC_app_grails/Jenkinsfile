@@ -2,15 +2,14 @@ pipeline {
   agent any
 
   tools {
-    groovy '3.0.13'
-    gradle '7.6.4'
   }
 
   stages {
 
     stage('Build') {
       steps {
-        echo 'Building..'
+        sh "./grailsw clean"
+        sh "./grailsw compile"
       }
     }
     stage('Test') {
