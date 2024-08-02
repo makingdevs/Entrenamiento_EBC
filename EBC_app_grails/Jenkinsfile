@@ -43,13 +43,13 @@ pipeline {
 
   post {
     always {
-      slackSend(channel: '#general', message: "Construcción completada - Resultado: ${currentBuild.currentResult}")
+        echo "Construcción completada: ${currentBuild.properties}"
     }
     success {
-      echo "Proceso con éxito a las ${new Date()}"
+      slackSend(channel: '#general', color: "good", message: "Construcción con éxito")
     }
     failure {
-      echo "Proceso con error a las ${new Date()}"
+      slackSend(channel: '#general', color: "danger", message: "Construcción fallida")
     }
   }
 }
