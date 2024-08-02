@@ -9,10 +9,14 @@ class EmployeeControllerSpec extends Specification implements ControllerUnitTest
 
     def populateValidParams(params) {
         assert params != null
-
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
-        assert false, "TODO: Provide a populateValidParams() implementation for this generated test suite"
+        params["name"] = "josé juan"
+        params["lastname"] = "reyes zuñiga"
+        params["weight"] = "2323"
+        params["bornDate"] = "date.struct"
+        params["bornDate_day"] = "2"
+        params["bornDate_month"] = "8"
+        params["bornDate_year"] = "2024"
+        params["active"] = "on"
     }
 
     void "Test the index action returns the correct model"() {
