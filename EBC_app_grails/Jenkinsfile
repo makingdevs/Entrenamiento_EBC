@@ -19,17 +19,30 @@ pipeline {
         }
       }
     }
-    stage('Test') {
+    stage('UnitTest') {
       steps {
         dir('EBC_app_grails') {
           sh "./grailsw test-app --unit"
+        }
+      }
+      post {
+        always {
+          dir('EBC_app_grails') {
+            junit "build/test-results/test/TEST-*.xml"
+          }
+        }
+      }
+    }
+    stage('IntegrationTest') {
+      steps {
+        dir('EBC_app_grails') {
           sh "./grailsw test-app --integration"
         }
       }
       post {
         always {
           dir('EBC_app_grails') {
-            junit "build/test-results/*est/TEST-*.xml"
+            junit "build/test-results/integrationTest/TEST-*.xml"
           }
         }
       }
