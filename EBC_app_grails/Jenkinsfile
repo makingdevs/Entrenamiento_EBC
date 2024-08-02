@@ -22,13 +22,14 @@ pipeline {
     stage('Test') {
       steps {
         dir('EBC_app_grails') {
-          sh "./grailsw test-app"
+          sh "./grailsw test-app --unit"
+          sh "./grailsw test-app --integration"
         }
       }
       post {
         always {
           dir('EBC_app_grails') {
-            junit "build/test-results/test/TEST-*.xml"
+            junit "build/test-results/*est/TEST-*.xml"
           }
         }
       }
