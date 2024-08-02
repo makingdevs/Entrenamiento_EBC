@@ -25,6 +25,13 @@ pipeline {
           sh "./grailsw test-app"
         }
       }
+      post {
+        always {
+          dir('EBC_app_grails') {
+            junit "build/test-results/test/TEST-*.xml"
+          }
+        }
+      }
     }
     stage('Deploy') {
       steps {
