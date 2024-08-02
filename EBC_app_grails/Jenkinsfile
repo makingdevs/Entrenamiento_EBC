@@ -5,8 +5,10 @@ pipeline {
 
     stage('Build') {
       steps {
-        sh "./grailsw clean"
-        sh "./grailsw compile"
+        dir('EBC_app_grails') {
+          sh "./grailsw clean"
+          sh "./grailsw compile"
+        }
       }
     }
     stage('Test') {
