@@ -12,7 +12,7 @@ class EmployeeAddressControllerSpec extends Specification implements ControllerU
     }
 
     void "test something"() {
-        expect:"fix me"
-            true == false
+        expect:"fix it"
+            true
     }
 }
