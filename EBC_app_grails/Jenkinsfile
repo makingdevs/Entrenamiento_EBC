@@ -42,14 +42,23 @@ pipeline {
   }
 
   post {
+
+    def message = """
+      Construcción *${currentBuild.fullDisplayName}* completada.\n
+      Estado: *${currentBuild.currentResult}*\n
+      Ver más en: <${env.BUILD_URL}|Aquí>\n
+      Duración: ${currentBuild.durationString}\n
+      Inicio: ${currentBuild.startTimeInMillis.format('HH:mm:ss, dd/MM/yyyy')}
+    """
+
     always {
-        echo "Construcción completada: ${currentBuild.properties}"
+      echo "Construcción completada: ${currentBuild.properties}"
     }
     success {
-      slackSend(channel: '#general', color: "good", message: "Construcción con éxito")
+      slackSend(channel: '#general', color: "good", message: message)
     }
     failure {
-      slackSend(channel: '#general', color: "danger", message: "Construcción fallida")
+      slackSend(channel: '#general', color: "danger", message: message)
     }
   }
 }
