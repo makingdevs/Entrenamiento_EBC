@@ -37,7 +37,13 @@ class AddressController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'address.label', default: 'Address'), address.id])
+                flash.message = message(
+                  code: 'default.created.message',
+                  args: [
+                    message(code: 'address.label', default: 'Address'),
+                    address.id
+                  ]
+                )
                 redirect address
             }
             '*' { respond address, [status: CREATED] }

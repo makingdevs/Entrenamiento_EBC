@@ -5,7 +5,7 @@ import grails.testing.web.controllers.ControllerUnitTest
 import grails.validation.ValidationException
 import spock.lang.*
 
-class EmployeeJJControllerSpec extends Specification implements ControllerUnitTest<EmployeeJJController>, DomainUnitTest<EmployeeJJ> {
+class EmployeeControllerSpec extends Specification implements ControllerUnitTest<EmployeeController>, DomainUnitTest<Employee> {
 
     def populateValidParams(params) {
         assert params != null
@@ -17,7 +17,7 @@ class EmployeeJJControllerSpec extends Specification implements ControllerUnitTe
 
     void "Test the index action returns the correct model"() {
         given:
-        controller.employeeJJService = Mock(EmployeeJJService) {
+        controller.employeeService = Mock(EmployeeService) {
             1 * list(_) >> []
             1 * count() >> 0
         }
@@ -26,8 +26,8 @@ class EmployeeJJControllerSpec extends Specification implements ControllerUnitTe
         controller.index()
 
         then:"The model is correct"
-        !model.employeeJJList
-        model.employeeJJCount == 0
+        !model.employeeList
+        model.employeeCount == 0
     }
 
     void "Test the create action returns the correct model"() {
@@ -35,7 +35,7 @@ class EmployeeJJControllerSpec extends Specification implements ControllerUnitTe
         controller.create()
 
         then:"The model is correctly created"
-        model.employeeJJ!= null
+        model.employee!= null
     }
 
     void "Test the save action with a null instance"() {
@@ -45,14 +45,14 @@ class EmployeeJJControllerSpec extends Specification implements ControllerUnitTe
         controller.save(null)
 
         then:"A 404 error is returned"
-        response.redirectedUrl == '/employeeJJ/index'
+        response.redirectedUrl == '/employee/index'
         flash.message != null
     }
 
     void "Test the save action correctly persists"() {
         given:
-        controller.employeeJJService = Mock(EmployeeJJService) {
-            1 * save(_ as EmployeeJJ)
+        controller.employeeService = Mock(EmployeeService) {
+            1 * save(_ as Employee)
         }
 
         when:"The save action is executed with a valid instance"
@@ -60,38 +60,38 @@ class EmployeeJJControllerSpec extends Specification implements ControllerUnitTe
         request.contentType = FORM_CONTENT_TYPE
         request.method = 'POST'
         populateValidParams(params)
-        def employeeJJ = new EmployeeJJ(params)
-        employeeJJ.id = 1
+        def employee = new Employee(params)
+        employee.id = 1
 
-        controller.save(employeeJJ)
+        controller.save(employee)
 
         then:"A redirect is issued to the show action"
-        response.redirectedUrl == '/employeeJJ/show/1'
+        response.redirectedUrl == '/employee/show/1'
         controller.flash.message != null
     }
 
     void "Test the save action with an invalid instance"() {
         given:
-        controller.employeeJJService = Mock(EmployeeJJService) {
-            1 * save(_ as EmployeeJJ) >> { EmployeeJJ employeeJJ ->
-                throw new ValidationException("Invalid instance", employeeJJ.errors)
+        controller.employeeService = Mock(EmployeeService) {
+            1 * save(_ as Employee) >> { Employee employee ->
+                throw new ValidationException("Invalid instance", employee.errors)
             }
         }
 
         when:"The save action is executed with an invalid instance"
         request.contentType = FORM_CONTENT_TYPE
         request.method = 'POST'
-        def employeeJJ = new EmployeeJJ()
-        controller.save(employeeJJ)
+        def employee = new Employee()
+        controller.save(employee)
 
         then:"The create view is rendered again with the correct model"
-        model.employeeJJ != null
+        model.employee != null
         view == 'create'
     }
 
     void "Test the show action with a null id"() {
         given:
-        controller.employeeJJService = Mock(EmployeeJJService) {
+        controller.employeeService = Mock(EmployeeService) {
             1 * get(null) >> null
         }
 
@@ -104,20 +104,20 @@ class EmployeeJJControllerSpec extends Specification implements ControllerUnitTe
 
     void "Test the show action with a valid id"() {
         given:
-        controller.employeeJJService = Mock(EmployeeJJService) {
-            1 * get(2) >> new EmployeeJJ()
+        controller.employeeService = Mock(EmployeeService) {
+            1 * get(2) >> new Employee()
         }
 
         when:"A domain instance is passed to the show action"
         controller.show(2)
 
         then:"A model is populated containing the domain instance"
-        model.employeeJJ instanceof EmployeeJJ
+        model.employee instanceof Employee
     }
 
     void "Test the edit action with a null id"() {
         given:
-        controller.employeeJJService = Mock(EmployeeJJService) {
+        controller.employeeService = Mock(EmployeeService) {
             1 * get(null) >> null
         }
 
@@ -130,15 +130,15 @@ class EmployeeJJControllerSpec extends Specification implements ControllerUnitTe
 
     void "Test the edit action with a valid id"() {
         given:
-        controller.employeeJJService = Mock(EmployeeJJService) {
-            1 * get(2) >> new EmployeeJJ()
+        controller.employeeService = Mock(EmployeeService) {
+            1 * get(2) >> new Employee()
         }
 
         when:"A domain instance is passed to the show action"
         controller.edit(2)
 
         then:"A model is populated containing the domain instance"
-        model.employeeJJ instanceof EmployeeJJ
+        model.employee instanceof Employee
     }
 
 
@@ -149,14 +149,14 @@ class EmployeeJJControllerSpec extends Specification implements ControllerUnitTe
         controller.update(null)
 
         then:"A 404 error is returned"
-        response.redirectedUrl == '/employeeJJ/index'
+        response.redirectedUrl == '/employee/index'
         flash.message != null
     }
 
     void "Test the update action correctly persists"() {
         given:
-        controller.employeeJJService = Mock(EmployeeJJService) {
-            1 * save(_ as EmployeeJJ)
+        controller.employeeService = Mock(EmployeeService) {
+            1 * save(_ as Employee)
         }
 
         when:"The save action is executed with a valid instance"
@@ -164,31 +164,31 @@ class EmployeeJJControllerSpec extends Specification implements ControllerUnitTe
         request.contentType = FORM_CONTENT_TYPE
         request.method = 'PUT'
         populateValidParams(params)
-        def employeeJJ = new EmployeeJJ(params)
-        employeeJJ.id = 1
+        def employee = new Employee(params)
+        employee.id = 1
 
-        controller.update(employeeJJ)
+        controller.update(employee)
 
         then:"A redirect is issued to the show action"
-        response.redirectedUrl == '/employeeJJ/show/1'
+        response.redirectedUrl == '/employee/show/1'
         controller.flash.message != null
     }
 
     void "Test the update action with an invalid instance"() {
         given:
-        controller.employeeJJService = Mock(EmployeeJJService) {
-            1 * save(_ as EmployeeJJ) >> { EmployeeJJ employeeJJ ->
-                throw new ValidationException("Invalid instance", employeeJJ.errors)
+        controller.employeeService = Mock(EmployeeService) {
+            1 * save(_ as Employee) >> { Employee employee ->
+                throw new ValidationException("Invalid instance", employee.errors)
             }
         }
 
         when:"The save action is executed with an invalid instance"
         request.contentType = FORM_CONTENT_TYPE
         request.method = 'PUT'
-        controller.update(new EmployeeJJ())
+        controller.update(new Employee())
 
         then:"The edit view is rendered again with the correct model"
-        model.employeeJJ != null
+        model.employee != null
         view == 'edit'
     }
 
@@ -199,13 +199,13 @@ class EmployeeJJControllerSpec extends Specification implements ControllerUnitTe
         controller.delete(null)
 
         then:"A 404 is returned"
-        response.redirectedUrl == '/employeeJJ/index'
+        response.redirectedUrl == '/employee/index'
         flash.message != null
     }
 
     void "Test the delete action with an instance"() {
         given:
-        controller.employeeJJService = Mock(EmployeeJJService) {
+        controller.employeeService = Mock(EmployeeService) {
             1 * delete(2)
         }
 
@@ -215,13 +215,7 @@ class EmployeeJJControllerSpec extends Specification implements ControllerUnitTe
         controller.delete(2)
 
         then:"The user is redirected to index"
-        response.redirectedUrl == '/employeeJJ/index'
+        response.redirectedUrl == '/employee/index'
         flash.message != null
     }
 }
-
-
-
-
-
-
