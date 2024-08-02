@@ -5,7 +5,7 @@ import spock.lang.Specification
 
 class EmployeeSpec extends Specification implements DomainUnitTest<Employee> {
 
-  void "persist some Employees"() {
+  void "explore the Trait DomainUnitTest<Employee>"() {
     when:
     println domain
     println domain.properties
@@ -16,22 +16,26 @@ class EmployeeSpec extends Specification implements DomainUnitTest<Employee> {
 
   }
 
-  void "persist another Employees"() {
+  void "persist and count Employees"() {
     when:
     new Employee(
       name: "Juan",
       lastName: "Reyes",
-      bornDate: new Date() - 365,
+      bornDate: new Date().parse("dd-MM-yyyy", "01-01-1990"),
       weight: 323,
       active: true
     ).save(flush: true)
 
-    println "*"*50
-    println Employee.count()
-    println "*"*50
+    new Employee(
+      name: "Jose",
+      lastName: "Zuñiga",
+      bornDate: new Date().parse("dd-MM-yyyy", "01-01-1995"),
+      weight: 324,
+      active: false
+    ).save(flush: true)
 
     then:
-    Employee.count()
+    Employee.count() == 2
 
   }
 
@@ -45,7 +49,6 @@ class EmployeeSpec extends Specification implements DomainUnitTest<Employee> {
       active: true
     )
     e.validate()
-
     println "*"*50
     println e.errors
     println "*"*50
