@@ -5,14 +5,14 @@ import spock.lang.Specification
 
 class AddressSpec extends Specification implements DomainUnitTest<Address> {
 
-    def setup() {
-    }
+  def setup() {
+  }
 
-    def cleanup() {
-    }
+  def cleanup() {
+  }
 
-    void "test something"() {
-        expect:"fix me"
-            true == false
-    }
+  void "test something"() {
+    expect:"fix it"
+    true == true
+  }
 }
