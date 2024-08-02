@@ -30,6 +30,8 @@ spring:
                 - '**/*.gson'
                 - 'logback.groovy'
                 - '*.properties'
+server:
+    port: 9999
 environments:
     development:
         management:
