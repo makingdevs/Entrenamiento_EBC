@@ -1,0 +1,40 @@
+pipeline {
+  agent any
+
+  tools {
+    groovy '3.0.13'
+    gradle '7.6.4'
+  }
+
+  stages {
+
+    stage('Build') {
+      steps {
+        echo 'Building..'
+      }
+    }
+    stage('Test') {
+      steps {
+        echo 'Testing..'
+      }
+    }
+    stage('Deploy') {
+      steps {
+        echo 'Deploying....'
+      }
+    }
+
+  }
+
+  post {
+    always {
+      echo "Proceso completado a las ${new Date()}"
+    }
+    success {
+      echo "Proceso con éxito a las ${new Date()}"
+    }
+    failure {
+      echo "Proceso con error a las ${new Date()}"
+    }
+  }
+}
