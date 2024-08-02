@@ -17,6 +17,12 @@ class Employee {
     name(blank: false, minSize: 3)
     lastName(blank: false, minSize: 4)
     weight(blank: false, min: 10)
+    bornDate(blank: false, validator: { valDate, obj ->
+      Date hoy = new Date()
+      Integer edad = hoy.year - valDate.year - ((hoy.month < valDate.month ||
+      (hoy.month == valDate.month && hoy.date < valDate.date) ? 1 : 0))
+      if(edad < 18) ["employee.bornDate.invalid"]
+    })
   }
 
   static mapping =  {
