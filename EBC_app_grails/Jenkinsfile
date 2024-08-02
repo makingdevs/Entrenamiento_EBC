@@ -52,7 +52,7 @@ pipeline {
       Estado: *${currentBuild.currentResult}*\n
       Ver más en: <${env.BUILD_URL}|Aquí>\n
       Duración: ${currentBuild.durationString}\n
-      Inicio: ${currentBuild.startTimeInMillis.format('HH:mm:ss, dd/MM/yyyy')}
+      Inicio: ${currentBuild.startTimeInMillis}
     """)
     }
     failure {
@@ -61,7 +61,7 @@ pipeline {
       Estado: *${currentBuild.currentResult}*\n
       Ver más en: <${env.BUILD_URL}|Aquí>\n
       Duración: ${currentBuild.durationString}\n
-      Inicio: ${currentBuild.startTimeInMillis.format('HH:mm:ss, dd/MM/yyyy')}
+      Inicio: ${currentBuild.startTimeInMillis}
     """)
     }
   }
