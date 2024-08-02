@@ -12,7 +12,7 @@ class EmployeeController {
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         params.each { log.info "${it}" }
-        respond employeeService.list(params), model:[employeeJJCount: employeeService.count()]
+        respond employeeService.list(params), model:[employeeCount: employeeService.count()]
     }
 
     def show(Long id) {
@@ -23,27 +23,27 @@ class EmployeeController {
         respond new Employee(params)
     }
 
-    def save(Employee employeeJJ) {
+    def save(Employee employee) {
         params.each { log.info "${it}" }
-        if (employeeJJ == null) {
+        if (employee == null) {
             notFound()
             return
         }
 
         try {
-            employeeService.save(employeeJJ)
+            employeeService.save(employee)
         } catch (ValidationException e) {
-            respond employeeJJ.errors, view:'create'
+            respond employee.errors, view:'create'
             return
         }
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: ["${employeeJJ.name} ${employeeJJ.lastName}", employeeJJ.id])
-                // flash.message = "Empleado '${employeeJJ.name} ${employeeJJ.lastName}' Creado con éxito!!!!"
-                redirect employeeJJ
+                flash.message = message(code: 'default.created.message', args: ["${employee.name} ${employee.lastName}", employee.id])
+                // flash.message = "Empleado '${employee.name} ${employee.lastName}' Creado con éxito!!!!"
+                redirect employee
             }
-            '*' { respond employeeJJ, [status: CREATED] }
+            '*' { respond employee, [status: CREATED] }
         }
     }
 
@@ -51,25 +51,25 @@ class EmployeeController {
         respond employeeService.get(id)
     }
 
-    def update(Employee employeeJJ) {
-        if (employeeJJ == null) {
+    def update(Employee employee) {
+        if (employee == null) {
             notFound()
             return
         }
 
         try {
-            employeeService.save(employeeJJ)
+            employeeService.save(employee)
         } catch (ValidationException e) {
-            respond employeeJJ.errors, view:'edit'
+            respond employee.errors, view:'edit'
             return
         }
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'employeeJJ.label', default: 'Employee'), employeeJJ.id])
-                redirect employeeJJ
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'employee.label', default: 'Employee'), employee.id])
+                redirect employee
             }
-            '*'{ respond employeeJJ, [status: OK] }
+            '*'{ respond employee, [status: OK] }
         }
     }
 
@@ -83,7 +83,7 @@ class EmployeeController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'employeeJJ.label', default: 'Employee'), id])
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'employee.label', default: 'Employee'), id])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
@@ -93,7 +93,7 @@ class EmployeeController {
     protected void notFound() {
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'employeeJJ.label', default: 'Employee'), params.id])
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'employee.label', default: 'Employee'), params.id])
                 redirect action: "index", method: "GET"
             }
             '*'{ render status: NOT_FOUND }

@@ -35,7 +35,7 @@ class EmployeeControllerSpec extends Specification implements ControllerUnitTest
         controller.create()
 
         then:"The model is correctly created"
-        model.employee!= null
+        model.employee != null
     }
 
     void "Test the save action with a null instance"() {
