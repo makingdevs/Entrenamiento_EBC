@@ -21,7 +21,6 @@ class HomePageSpec extends GebSpec {
     and:
     def links = $("li.controller").children()
     links[0].click()
-    Thread.sleep(3000)
 
     then:
     $('h1').text() == "Address Lista"
