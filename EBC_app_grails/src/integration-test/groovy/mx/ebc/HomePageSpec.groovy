@@ -11,7 +11,20 @@ class HomePageSpec extends GebSpec {
     go '/'
 
     then:
-    $('h1').text() == "Welcome to EBC App"
+    $('h1').text() == "Welcome to EBC APP"
+  }
+
+  void "go to address controller"() {
+    when:
+    go '/'
+
+    and:
+    def links = $("li.controller").children()
+    links[0].click()
+    Thread.sleep(3000)
+
+    then:
+    $('h1').text() == "Address Lista"
   }
 
 }
